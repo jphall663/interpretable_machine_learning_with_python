@@ -1,0 +1,1 @@
+This is the repo for Patrick Hall's oriole. Temp course name is Interpretable machine learning with Python, XGBoost, and H2O.
