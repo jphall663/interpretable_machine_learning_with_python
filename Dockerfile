@@ -45,13 +45,13 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
     apt-get install git-lfs
 
 # Examples and data
-RUN mkdir GWU_data_mining && \
-    cd GWU_data_mining && \
-    git init && \
-    git remote add origin https://github.com/jphall663/GWU_data_mining.git && \
-    git pull origin master && \
-    git lfs install && \
-    git lfs track '*.jpg' '*.png' '*.csv' '*.sas7bdat'
+#RUN mkdir GWU_data_mining && \
+#    cd GWU_data_mining && \
+#    git init && \
+#    git remote add origin https://github.com/jphall663/GWU_data_mining.git && \
+#    git pull origin master && \
+#    git lfs install && \
+#    git lfs track '*.jpg' '*.png' '*.csv' '*.sas7bdat'
 
 # XGBoost
 RUN apt-get -y install gcc g++ make && \
@@ -64,3 +64,24 @@ RUN apt-get -y install gcc g++ make && \
         
 # GraphViz
 RUN apt-get -y install graphviz
+
+###############################
+RUN pip install matplotlib==2.0.2
+
+# Launchbot labels
+LABEL name.launchbot.io="ormlanders/interpretable-ml-python-xgboost-h2o"
+LABEL workdir.launchbot.io="/usr/workdir"
+LABEL 8888.port.launchbot.io="Jupyter Notebook"
+
+# Set the working directory
+WORKDIR /usr/workdir
+
+# Add in notebook for testing
+COPY xgboost_pdp_ice.ipynb /usr/workdir/xgboost_pdp_ice.ipynb
+COPY default_of_credit_card_clients.xls /usr/workdir/default_of_credit_card_clients.xls
+
+# Expose the notebook port
+EXPOSE 8888
+
+# Start the notebook server
+CMD jupyter notebook --no-browser --port 8888 --ip=* --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True
