@@ -44,15 +44,6 @@ RUN apt-get -y install git
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
     apt-get install git-lfs
 
-# Examples and data
-#RUN mkdir GWU_data_mining && \
-#    cd GWU_data_mining && \
-#    git init && \
-#    git remote add origin https://github.com/jphall663/GWU_data_mining.git && \
-#    git pull origin master && \
-#    git lfs install && \
-#    git lfs track '*.jpg' '*.png' '*.csv' '*.sas7bdat'
-
 # XGBoost
 RUN apt-get -y install gcc g++ make && \
     conda install libgcc && \
@@ -76,7 +67,7 @@ LABEL 8888.port.launchbot.io="Jupyter Notebook"
 # Set the working directory
 WORKDIR /usr/workdir
 
-# Add in notebook for testing
+# Add files 
 COPY xgboost_pdp_ice.ipynb /usr/workdir/xgboost_pdp_ice.ipynb
 COPY default_of_credit_card_clients.xls /usr/workdir/default_of_credit_card_clients.xls
 
