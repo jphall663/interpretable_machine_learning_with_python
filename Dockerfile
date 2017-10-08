@@ -68,7 +68,7 @@ LABEL 8888.port.launchbot.io="Jupyter Notebook"
 WORKDIR /usr/workdir
 
 # Add files 
-COPY xgboost_pdp_ice.ipynb /usr/workdir/xgboost_pdp_ice.ipynb
+COPY *.ipynb /usr/workdir/
 COPY default_of_credit_card_clients.xls /usr/workdir/default_of_credit_card_clients.xls
 
 # Expose the notebook port
