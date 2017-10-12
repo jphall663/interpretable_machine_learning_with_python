@@ -29,11 +29,11 @@ CMD [ "/bin/bash" ]
 RUN apt-get -f -y install default-jdk
 
 # H2o deps
-RUN pip install requests && \
-    pip install tabulate && \
-    pip install six && \
-    pip install future && \
-    pip install colorama
+RUN pip install --upgrade pip && pip install requests \
+    tabulate \
+    six \
+    future \
+    colorama
 
 # H2o
 RUN pip uninstall h2o || true && \
@@ -57,7 +57,8 @@ RUN apt-get -y install gcc g++ make && \
 RUN apt-get -y install graphviz
 
 ###############################
-RUN pip install matplotlib==2.0.2
+RUN pip install matplotlib==2.0.2 \
+		seaborn==0.8.1
 
 # Launchbot labels
 LABEL name.launchbot.io="ormlanders/interpretable-ml-python-xgboost-h2o"
@@ -70,6 +71,8 @@ WORKDIR /usr/workdir
 # Add files 
 COPY *.ipynb /usr/workdir/
 COPY default_of_credit_card_clients.xls /usr/workdir/default_of_credit_card_clients.xls
+
+USER $NB_USER
 
 # Expose the notebook port
 EXPOSE 8888
