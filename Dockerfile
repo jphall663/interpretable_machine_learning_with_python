@@ -62,14 +62,14 @@ RUN pip install matplotlib==2.0.2 \
 
 # Launchbot labels
 LABEL name.launchbot.io="ormlanders/interpretable-ml-python-xgboost-h2o"
-LABEL workdir.launchbot.io="/usr/workdir"
+LABEL workdir.launchbot.io="/home/jovyan"
 LABEL 8888.port.launchbot.io="Jupyter Notebook"
 
 # Add user joyvan
 RUN useradd -ms /bin/bash joyvan
 
 # Set the working directory
-WORKDIR /home/joyvan/
+WORKDIR /home/joyvan
 
 # Add files
 COPY *.ipynb /home/joyvan/
