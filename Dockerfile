@@ -1,4 +1,4 @@
-# Base debian system 
+# Base debian system
 FROM debian:8.5
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
@@ -6,6 +6,9 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
+
+# Add user joyvan
+RUN useradd -ms /bin/bash joyvan
 
 # Anaconda Python 3.5
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
@@ -51,8 +54,10 @@ RUN apt-get -y install gcc g++ make && \
     cd xgboost && \
     make && \
     cd python-package && \
-    python setup.py install --user
-        
+    python setup.py install #--user
+
+ENV PATH /xgboost:$PATH
+
 # GraphViz
 RUN apt-get -y install graphviz
 
@@ -62,17 +67,17 @@ RUN pip install matplotlib==2.0.2 \
 
 # Launchbot labels
 LABEL name.launchbot.io="ormlanders/interpretable-ml-python-xgboost-h2o"
-LABEL workdir.launchbot.io="/usr/workdir"
+LABEL workdir.launchbot.io="/home/jovyan"
 LABEL 8888.port.launchbot.io="Jupyter Notebook"
 
 # Set the working directory
-WORKDIR /usr/workdir
+WORKDIR /home/joyvan
 
-# Add files 
-COPY *.ipynb /usr/workdir/
-COPY default_of_credit_card_clients.xls /usr/workdir/default_of_credit_card_clients.xls
+# Add files
+COPY *.ipynb /home/joyvan/
+COPY default_of_credit_card_clients.xls /home/joyvan/default_of_credit_card_clients.xls
 
-USER $NB_USER
+USER joyvan
 
 # Expose the notebook port
 EXPOSE 8888
