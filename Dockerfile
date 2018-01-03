@@ -7,6 +7,9 @@ RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificate
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
 
+# Add user joyvan
+RUN useradd -ms /bin/bash joyvan
+
 # Anaconda Python 3.5
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     wget --quiet https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh -O ~/anaconda.sh && \
@@ -51,7 +54,9 @@ RUN apt-get -y install gcc g++ make && \
     cd xgboost && \
     make && \
     cd python-package && \
-    python setup.py install --user
+    python setup.py install #--user
+
+ENV PATH /xgboost:$PATH
 
 # GraphViz
 RUN apt-get -y install graphviz
@@ -64,9 +69,6 @@ RUN pip install matplotlib==2.0.2 \
 LABEL name.launchbot.io="ormlanders/interpretable-ml-python-xgboost-h2o"
 LABEL workdir.launchbot.io="/home/jovyan"
 LABEL 8888.port.launchbot.io="Jupyter Notebook"
-
-# Add user joyvan
-RUN useradd -ms /bin/bash joyvan
 
 # Set the working directory
 WORKDIR /home/joyvan
