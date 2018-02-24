@@ -3,10 +3,10 @@
 Usage of AI and machine learning models is likely to become more commonplace as larger swaths of the economy embrace automation and data-driven decision-making. While these predictive systems can be quite accurate, they are usually treated as inscrutable black boxes that produce only numeric predictions with no accompanying explanations. Unfortunately, recent studies and recent events have drawn attention to mathematical and sociological flaws in prominent weak AI and ML systems, but practitioners don’t often have the right tools to pry open machine learning models and debug them. This Oriole is part of a series that introduces several new approaches to that increase transparency, accountability, and trustworthiness in machine learning models. If you are a data scientist or analyst and you want to explain a machine learning model to your customers or managers (or if you have concerns about documentation, validation, or regulatory requirements), then this series of Jupyter notebooks is for you!
 
 The Notebooks highlight techniques such as:
-* [Monotonic XGBoost models, partial dependence, and individual conditional expectation plots](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O#enhancing-transparency-in-machine-learning-models-with-python-and-xgboost)
-* [Decision tree surrogates, reason codes, and ensembles of explanations](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O#increase-transparency-and-accountability-in-your-machine-learning-project-with-python)
-* [LIME](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O#increase-transparency-and-accountability-in-your-machine-learning-project-with-python)
-* [Sensitivity and residual analysis](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O#testing-machine-learning-models-for-accuracy-trustworthiness-and-stability-with-python-and-h2o)
+* [Monotonic XGBoost models, partial dependence, and individual conditional expectation plots](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/xgboost_pdp_ice.ipynb)
+* [Decision tree surrogates, reason codes, and ensembles of explanations](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/dt_surrogate_loco.ipynb)
+* [LIME](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/lime.ipynb)
+* [Sensitivity and residual analysis](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/resid_sens_analysis.ipyn)
 
 ### Enhancing Transparency in Machine Learning Models with Python and XGBoost - [Notebook](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/xgboost_pdp_ice.ipynb)
 
