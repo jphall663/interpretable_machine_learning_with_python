@@ -2,7 +2,7 @@
 
 Usage of AI and machine learning models is likely to become more commonplace as larger swaths of the economy embrace automation and data-driven decision-making. While these predictive systems can be quite accurate, they are usually treated as inscrutable black boxes that produce only numeric predictions with no accompanying explanations. Unfortunately, recent studies and recent events have drawn attention to mathematical and sociological flaws in prominent weak AI and ML systems, but practitioners don’t often have the right tools to pry open machine learning models and debug them. This Oriole is part of a series that introduces several new approaches to that increase transparency, accountability, and trustworthiness in machine learning models. If you are a data scientist or analyst and you want to explain a machine learning model to your customers or managers (or if you have concerns about documentation, validation, or regulatory requirements), then this series of Jupyter notebooks is for you!
 
-The Notebooks highlight techniques such as:
+The notebooks highlight techniques such as:
 * [Monotonic XGBoost models, partial dependence, and individual conditional expectation plots](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/xgboost_pdp_ice.ipynb)
 * [Decision tree surrogates, reason codes, and ensembles of explanations](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/dt_surrogate_loco.ipynb)
 * [LIME](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/lime.ipynb)
@@ -42,3 +42,30 @@ Because machine learning model predictions can vary drastically for small change
 Sensitivity analysis investigates whether model behavior and outputs remain stable when input data is intentionally perturbed, or other changes are simulated in input data. In this Oriole, we will enhance trust in a complex credit default model by testing and debugging its predictions with sensitivity analysis.
 
 We’ll further enhance trust in our model using residual analysis. Residuals refer to the difference between the recorded value of a target variable and the predicted value of a target variable for each row in a data set. Generally, the residuals of a well-fit model should be randomly distributed, because good models will account for most phenomena in a data set, except for random error. In this Oriole, we will create residual plots for a complex model to debug any accuracy problems arising from underfitting or outliers.
+
+## Installation
+
+The ideal way to access these notebook is through [O'Reilly Safari](https://www.safaribooksonline.com/). Doing so will enable video narration by the notebook author and no installation of software packages is required. To use these notebooks outside of the Safari platform, follow the instructions below.
+
+  Install:
+
+  1. Anaconda Python 4.2.0 from the [Anaconda archives](https://repo.continuum.io/archive/).
+  2. [Java](https://java.com/download).
+  3. The latest stable [h2o](https://www.h2o.ai/download/) Python package.
+  4. [Git](https://git-scm.com/downloads).
+  5. [XGBoost](https://github.com/dmlc/xgboost) with Python bindings.
+  6. [GraphViz](http://www.graphviz.org/).
+
+  Anaconda Python, Java, Git, and GraphViz must be added to your system path.
+
+  From a terminal:
+
+  7. Clone the mli-resources repository with examples.</br>
+  `$ git clone https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O.git`
+
+  8. `$ cd Interpretable-machine-learning-with-Python-XGBoost-and-H2O`
+
+  9. Start the Jupyter notebook server.</br>
+  `$ jupyter notebook`
+
+  10. Navigate to the port Jupyter directs you to on your machine.
