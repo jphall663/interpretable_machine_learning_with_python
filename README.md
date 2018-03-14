@@ -41,7 +41,7 @@ To get a better picture of the complex model’s local behavior and to enhance t
 
 Machine learning can create very accurate predictive models, but these models can be almost impossible to explain to your boss, your customers, or even your regulators. This notebook will use (Local Interpretable Model-agnostic Explanations) LIME to increase transparency and accountability in a complex GBM model trained on the UCI credit card default data. LIME is a method for building linear surrogate models for local regions in a data set, often single rows of data. LIME sheds light on how model predictions are made and describes local model mechanisms for specific rows of data. Because the LIME sampling process may feel abstract to some practitioners, this notebook will also introduce a more straightforward method of creating local samples for LIME.
 
-Once local samples have been generated, we will fit LIME models to understand local trends in the complex model’s predictions. LIME can also tell us the local contribution of each input variable toward each model prediction, and these contributions can be sorted to create reason codes -- plain English explanations of every model prediction. We will also validate the fit of the LIME model to enhance trust in our explanations using the local model’s R2 statistic and a ranked predictions plot.
+Once local samples have been generated, we will fit LIME models to understand local trends in the complex model’s predictions. LIME can also tell us the local contribution of each input variable toward each model prediction, and these contributions can be sorted to create reason codes -- plain English explanations of every model prediction. We will also validate the fit of the LIME model to enhance trust in our explanations using the local model’s R<sup>2</sup> statistic and a ranked predictions plot.
 
 ### Testing Machine Learning Models for Accuracy, Trustworthiness, and Stability with Python and H2O - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/resid_sens_analysis.ipynb)
 
@@ -50,7 +50,7 @@ Once local samples have been generated, we will fit LIME models to understand lo
 Because machine learning model predictions can vary drastically for small changes in input variable values, especially outside of training input domains, sensitivity analysis is perhaps the most important validation technique for increasing trust in machine learning model predictions.
 Sensitivity analysis investigates whether model behavior and outputs remain stable when input data is intentionally perturbed, or other changes are simulated in input data. In this notebook, we will enhance trust in a complex credit default model by testing and debugging its predictions with sensitivity analysis.
 
-We’ll further enhance trust in our model using residual analysis. Residuals refer to the difference between the recorded value of a target variable and the predicted value of a target variable for each row in a data set. Generally, the residuals of a well-fit model should be randomly distributed, because good models will account for most phenomena in a data set, except for random error. In this notebook, we will create residual plots for a complex model to debug any accuracy problems arising from underfitting or outliers.
+We’ll further enhance trust in our model using residual analysis. Residuals refer to the difference between the recorded value of a target variable and the predicted value of a target variable for each row in a data set. Generally, the residuals of a well-fit model should be randomly distributed, because good models will account for most phenomena in a data set, except for random error. In this notebook, we will create residual plots for a complex model to debug any accuracy problems arising from overfitting or outliers.
 
 ## Using the Examples
 
@@ -112,4 +112,4 @@ From a terminal:
 9. Start the Jupyter notebook server.</br>
 `$ jupyter notebook`
 
-10. Navigate to the port Jupyter directs you to on your machine.
+10. Navigate to the port Jupyter directs you to on your machine, probably `http://localhost:8888/`.
