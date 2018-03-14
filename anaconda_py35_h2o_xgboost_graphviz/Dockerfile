@@ -1,3 +1,10 @@
+# Install and start docker
+# Then this file may be used to create a Docker container using:
+# $ docker build anaconda_py35_h2o_xgboost_graphviz
+# $ docker run -i -t -p 8888:8888 <image_id> /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/mli-resources --ip='*' --port=8888 --no-browser"
+# $ docker cp path/to/train.csv <container_id>:/mli-resources/data
+# Open a browser and navigate to localhost:8888
+
 # Base debian system
 FROM debian:8.5
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -6,9 +13,6 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
-
-# Add user joyvan
-RUN useradd -ms /bin/bash joyvan
 
 # Anaconda Python 3.5
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
@@ -29,14 +33,14 @@ ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
 
 # Java
-RUN apt-get -f -y install default-jdk
+RUN apt-get -y -f install default-jdk
 
 # H2o deps
-RUN pip install --upgrade pip && pip install requests \
-    tabulate \
-    six \
-    future \
-    colorama
+RUN pip install requests && \
+    pip install tabulate && \
+    pip install six && \
+    pip install future && \
+    pip install colorama
 
 # H2o
 RUN pip uninstall h2o || true && \
@@ -44,43 +48,18 @@ RUN pip uninstall h2o || true && \
 
 # Git
 RUN apt-get -y install git
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
-    apt-get install git-lfs
+
+# Examples
+RUN git clone https://github.com/h2oai/mli-resources.git
 
 # XGBoost
 RUN apt-get -y install gcc g++ make && \
-    conda install libgcc && \
+    conda install -y libgcc && \
     git clone --recursive https://github.com/dmlc/xgboost.git && \
     cd xgboost && \
     make && \
     cd python-package && \
-    python setup.py install #--user
-
-ENV PATH /xgboost:$PATH
+    python setup.py install --user
 
 # GraphViz
 RUN apt-get -y install graphviz
-
-###############################
-RUN pip install matplotlib==2.0.2 \
-		seaborn==0.8.1
-
-# Launchbot labels
-LABEL name.launchbot.io="ormlanders/interpretable-ml-python-xgboost-h2o"
-LABEL workdir.launchbot.io="/home/jovyan"
-LABEL 8888.port.launchbot.io="Jupyter Notebook"
-
-# Set the working directory
-WORKDIR /home/joyvan
-
-# Add files
-COPY *.ipynb /home/joyvan/
-COPY default_of_credit_card_clients.xls /home/joyvan/default_of_credit_card_clients.xls
-
-USER joyvan
-
-# Expose the notebook port
-EXPOSE 8888
-
-# Start the notebook server
-CMD jupyter notebook --no-browser --port 8888 --ip=* --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True
