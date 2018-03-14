@@ -1,6 +1,6 @@
-# Interpretable-machine-learning-with-Python-XGBoost-and-H2O
+# Interpretable machine learning with Python
 
-## Overview
+### Overview
 
 Usage of AI and machine learning models is likely to become more commonplace as larger swaths of the economy embrace automation and data-driven decision-making. While these predictive systems can be quite accurate, they are usually treated as inscrutable black boxes that produce only numeric predictions with no accompanying explanations. Unfortunately, recent studies and recent events have drawn attention to mathematical and sociological flaws in prominent weak AI and ML systems, but practitioners don’t often have the right tools to pry open machine learning models and debug them. This Oriole is part of a series that introduces several new approaches to that increase transparency, accountability, and trustworthiness in machine learning models. If you are a data scientist or analyst and you want to explain a machine learning model to your customers or managers (or if you have concerns about documentation, validation, or regulatory requirements), then this series of Jupyter notebooks is for you!
 
@@ -11,13 +11,13 @@ The notebooks highlight techniques such as:
 * [Sensitivity and residual analysis](https://content.oreilly.com/oriole/Interpretable-machine-learning-with-Python-XGBoost-and-H2O/blob/master/resid_sens_analysis.ipyn)
 
 The notebooks can be accessed through:
-* [O'Reilly Safari]()
-* [Docker container]()
-* [Manual installation]()
+* [O'Reilly Safari](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
+* [Docker container](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation-recommended)
+* [Manual installation](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
 ***
 
-### Enhancing Transparency in Machine Learning Models with Python and XGBoost - [Notebook]()
+### Enhancing Transparency in Machine Learning Models with Python and XGBoost - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/xgboost_pdp_ice.ipynb)
 
 ![](./readme_pics/pdp_ice.png)
 
@@ -26,7 +26,7 @@ Monotonicity constraints can turn opaque, complex models into transparent, and p
 Once we have trained a monotonic XGBoost model, we will use partial dependence plots and ICE plots to investigate the internal mechanisms of the model and to verify its monotonic behavior. Partial dependence plots show us the way machine-learned response functions change based on the values of one or two input variables of interest, while averaging out the effects of all other input variables. ICE plots can be used to create more localized descriptions of model predictions, and ICE plots pair nicely with partial dependence plots.
 
 
-### Increase Transparency and Accountability in Your Machine Learning Project with Python - [Notebook]()
+### Increase Transparency and Accountability in Your Machine Learning Project with Python - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/dt_surrogate_loco.ipynb)
 
 ![](./readme_pics/dt_surrogate.png)
 
@@ -35,7 +35,7 @@ Gradient boosting machines (GBMs) and other complex machine learning models are 
 To get a better picture of the complex model’s local behavior and to enhance the accountability of the model’s predictions, we will use a variant of the leave-one-covariate-out (LOCO) technique. LOCO enables us to calculate the local contribution each input variable makes toward each model prediction. We will then rank the local contributions to generate reason codes that describe, in plain English, the model’s decision process for every prediction.
 
 
-### Explain Your Predictive Models to Business Stakeholders with LIME using Python and H2O - [Notebook]()
+### Explain Your Predictive Models to Business Stakeholders with LIME using Python and H2O - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/lime.ipynb)
 
 ![](./readme_pics/lime.png)
 
@@ -43,7 +43,7 @@ Machine learning can create very accurate predictive models, but these models ca
 
 Once local samples have been generated, we will fit LIME models to understand local trends in the complex model’s predictions. LIME can also tell us the local contribution of each input variable toward each model prediction, and these contributions can be sorted to create reason codes -- plain English explanations of every model prediction. We will also validate the fit of the LIME model to enhance trust in our explanations using the local model’s R2 statistic and a ranked predictions plot.
 
-### Testing Machine Learning Models for Accuracy, Trustworthiness, and Stability with Python and H2O - [Notebook]()
+### Testing Machine Learning Models for Accuracy, Trustworthiness, and Stability with Python and H2O - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/resid_sens_analysis.ipynb)
 
 ![](./readme_pics/resid.png)
 
@@ -77,7 +77,7 @@ From a terminal:
 `$ mkdir anaconda_py35_h2o_xgboost_graphviz`
 
 3. Fetch the Dockerfile from the mli-resources repo.</br>
-`$ curl https://raw.githubusercontent.com/jphall663/ > anaconda_py35_h2o_xgboost_graphviz/Dockerfile`
+`$ curl https://raw.githubusercontent.com/jphall663/interpretable_machine_learning_with_python/master/anaconda_py35_h2o_xgboost_graphviz/Dockerfile > anaconda_py35_h2o_xgboost_graphviz/Dockerfile`
 
 4. Build a docker image from the Dockefile.</br>
 `$ docker build anaconda_py35_h2o_xgboost_graphviz`
