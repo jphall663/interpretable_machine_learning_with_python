@@ -93,7 +93,7 @@ From a terminal:
 
 ### Manual Installation
 
-1. Anaconda Python 4.2.0 from the [Anaconda archives](https://repo.continuum.io/archive/).
+1. Anaconda Python 4.2.0 from the [Anaconda archives](https://repo.continuum.io/archive/) along with the [seaborn](https://pypi.python.org/pypi/seaborn) package.
 2. [Java](https://java.com/download).
 3. The latest stable [h2o](https://www.h2o.ai/download/) Python package.
 4. [Git](https://git-scm.com/downloads).
