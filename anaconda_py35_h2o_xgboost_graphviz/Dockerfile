@@ -62,3 +62,7 @@ RUN apt-get -y install gcc g++ make && \
 
 # GraphViz
 RUN apt-get -y install graphviz
+
+# Seaborn
+RUN pip install matplotlib==2.0.2 \
+		seaborn==0.8.1
