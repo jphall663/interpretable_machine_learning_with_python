@@ -43,7 +43,7 @@ RUN pip install requests && \
 
 # H2o
 RUN pip uninstall h2o || true && \
-    pip install -f https://h2o-release.s3.amazonaws.com/h2o/rel-weierstrass/2/Python/h2o-3.14.0.2-py2.py3-none-any.whl --trusted-host h2o-release.s3.amazonaws.com h2o
+    pip install -f http://h2o-release.s3.amazonaws.com/h2o/rel-wright/7/Python/h2o-3.20.0.7-py2.py3-none-any.whl --trusted-host h2o-release.s3.amazonaws.com h2o
 
 # Git
 RUN apt-get -y install git
@@ -63,6 +63,11 @@ RUN apt-get -y install gcc g++ make && \
 # GraphViz
 RUN apt-get -y install graphviz
 
+# Shap 
+RUN pip install shap
+
 # Seaborn
 RUN pip install matplotlib==2.0.2 \
 		seaborn==0.8.1
+        
+       
