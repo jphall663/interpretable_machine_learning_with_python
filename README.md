@@ -74,13 +74,13 @@ A Dockerfile is provided to build a docker container with all necessary packages
 From a terminal:
 
 2. Create a directory for the Dockerfile.</br>
-`$ mkdir anaconda_py35_h2o_xgboost_graphviz`
+`$ mkdir anaconda_py36_h2o_xgboost_graphviz_shap`
 
 3. Fetch the Dockerfile.</br>
 `$ curl https://raw.githubusercontent.com/jphall663/interpretable_machine_learning_with_python/master/anaconda_py35_h2o_xgboost_graphviz/Dockerfile > anaconda_py35_h2o_xgboost_graphviz/Dockerfile`
 
 4. Build a docker image from the Dockefile.</br>
-`$ docker build anaconda_py35_h2o_xgboost_graphviz`
+`$ docker build anaconda_py36_h2o_xgboost_graphviz_shap`
 
 5. Display docker image IDs. You are probably interested in the most recently created image. </br>
 `$ docker images`
@@ -93,12 +93,14 @@ From a terminal:
 
 ### Manual Installation
 
-1. Anaconda Python 4.2.0 from the [Anaconda archives](https://repo.continuum.io/archive/) along with the [seaborn](https://pypi.python.org/pypi/seaborn) package.
+1. Anaconda Python 5.1.0 from the [Anaconda archives](https://repo.continuum.io/archive/) along with the [seaborn](https://pypi.python.org/pypi/seaborn) package.
 2. [Java](https://java.com/download).
 3. The latest stable [h2o](https://www.h2o.ai/download/) Python package.
 4. [Git](https://git-scm.com/downloads).
 5. [XGBoost](https://github.com/dmlc/xgboost) with Python bindings.
 6. [GraphViz](http://www.graphviz.org/).
+7. [Seaborn](https://pypi.org/project/seaborn/) package.
+8. [Shap](https://pypi.org/project/shap/) package.  
 
 Anaconda Python, Java, Git, and GraphViz must be added to your system path.
 
