@@ -77,7 +77,7 @@ From a terminal:
 `$ mkdir anaconda_py36_h2o_xgboost_graphviz_shap`
 
 3. Fetch the Dockerfile.</br>
-`$ curl https://raw.githubusercontent.com/jphall663/interpretable_machine_learning_with_python/master/anaconda_py35_h2o_xgboost_graphviz/Dockerfile > anaconda_py35_h2o_xgboost_graphviz/Dockerfile`
+`$ curl https://raw.githubusercontent.com/jphall663/interpretable_machine_learning_with_python/master/anaconda_py36_h2o_xgboost_graphviz_shap/Dockerfile > anaconda_py36_h2o_xgboost_graphviz_shap/Dockerfile`
 
 4. Build a docker image from the Dockefile.</br>
 `$ docker build anaconda_py36_h2o_xgboost_graphviz_shap`
