@@ -86,7 +86,7 @@ From a terminal:
 `$ docker images`
 
 6. Start the docker image and the Jupyter notebook server.</br>
- `$ docker run -i -t -p 8888:8888 <image_id> /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/interpretable_machine_learning_with_python --ip='*' --port=8888 --no-browser"`
+ `$ docker run -i -t -p 8888:8888 <image_id> /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/interpretable_machine_learning_with_python --allow-root --ip='*' --port=8888 --no-browser"`
 
 7. Navigate to port 8888 on your machine, probably `http://localhost:8888/`.
 
