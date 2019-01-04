@@ -37,7 +37,7 @@ To get a better picture of the complex model’s local behavior and to enhance t
 
 ### Increase Fairness in Your Machine Learning Project with Disparate Impact Analysis using Python and H2O - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/dia.ipynb)
 
-<img src="./readme_pics/dia.png" height="300" class="center">
+<img src="./readme_pics/dia.png" height="400">
 
 Fairness is an incredibly important, but highly complex entity. So much so that leading scholars have yet to agree on a strict definition. However, there is a practical way to discuss and handle observational fairness, or how your model predictions affect different groups of people. This procedure is known as disparate impact analysis (DIA). DIA is far from perfect, as it relies heavily on user-defined thresholds and reference levels for disparity and does not attempt to remediate disparity or provide information on sources of disparity, but it is a fairly straightforward method to quantify your model’s behavior across sensitive demographic segments or other potentially interesting groups of observations. DIA is also an accepted, regulation-compliant tool for fair-lending purposes in the U.S. financial services industry. If it’s good enough for multibillion-dollar credit portfolios, it’s probably good enough for your project.
 
