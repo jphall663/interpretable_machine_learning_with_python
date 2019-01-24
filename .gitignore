@@ -1,5 +1,5 @@
 .ipynb_checkpoints/
 .DS_store
-dt_surrogate_mojo.gv
-dt_surrogate_mojo.png
-dt_surrogate_mojo.zip
+surrogate*.gv
+surrogate*.png
+surrogate*.zip
