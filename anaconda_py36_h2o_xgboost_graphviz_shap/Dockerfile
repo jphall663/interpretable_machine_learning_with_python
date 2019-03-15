@@ -52,13 +52,10 @@ RUN apt-get -y install git
 RUN git clone https://github.com/jphall663/interpretable_machine_learning_with_python.git
 
 # XGBoost
-RUN apt-get -y install gcc g++ make && \
+RUN apt-get update --fix-missing && \
+    apt-get -y install gcc g++ make && \
     conda install -y libgcc && \
-    git clone --recursive https://github.com/dmlc/xgboost.git && \
-    cd xgboost && \
-    make && \
-    cd python-package && \
-    python setup.py install --user
+    pip install xgboost==0.7.post3
 
 # GraphViz
 RUN apt-get -y install graphviz
