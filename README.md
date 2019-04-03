@@ -73,9 +73,33 @@ The ideal way to use these notebook is through [O'Reilly Safari](https://www.saf
 
 To use these notebooks outside of the Safari platform, follow the instructions below.
 
-### Docker Installation (recommended)
+### H2O Aquarium (recommended)
 
-A Dockerfile is provided to build a docker container with all necessary packages and dependencies. This is the easiest way to use these examples if you are on Mac OS X, \*nix, or Windows 10. To do so:
+H2O Aquarium is a free educational environment that hosts these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
+
+1. Navigate to the Aquarium URL: https://aquarium.h2o.ai
+
+2. Create a new Aquarium account.
+
+3. Check the registered email inbox and use the temporary password to login to Aquarium.
+
+4. Click `Browse Labs.`
+
+5. Click `View Detail` under *Patrick Hall’s MLI Tutorial*.
+
+6. Click `Start Lab` (This can take several minutes).
+
+7. Click on the *Jupyter URL* when it becomes available.
+
+8. Enter the token `h2o`.
+
+9. Browse/run the Jupyter notebooks.
+
+10. Click `End Lab` when you are finished.
+
+### Docker Installation
+
+A Dockerfile is provided to build a docker container with all necessary packages and dependencies. This is a way to use these examples if you are on Mac OS X, \*nix, or Windows 10. To do so:
 
 1. Install and start [docker](https://www.docker.com/).
 
