@@ -43,7 +43,7 @@ RUN pip install requests && \
 
 # H2o
 RUN pip uninstall h2o || true && \
-    pip install -f http://h2o-release.s3.amazonaws.com/h2o/rel-wright/7/Python/h2o-3.20.0.7-py2.py3-none-any.whl --trusted-host h2o-release.s3.amazonaws.com h2o
+    pip install h2o==3.16.0.1
 
 # Git
 RUN apt-get -y install git
@@ -52,13 +52,10 @@ RUN apt-get -y install git
 RUN git clone https://github.com/jphall663/interpretable_machine_learning_with_python.git
 
 # XGBoost
-RUN apt-get -y install gcc g++ make && \
+RUN apt-get update --fix-missing && \
+    apt-get -y install gcc g++ make && \
     conda install -y libgcc && \
-    git clone --recursive https://github.com/dmlc/xgboost.git && \
-    cd xgboost && \
-    make && \
-    cd python-package && \
-    python setup.py install --user
+    pip install xgboost==0.7.post3
 
 # GraphViz
 RUN apt-get -y install graphviz
