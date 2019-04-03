@@ -12,9 +12,10 @@ The notebooks highlight techniques such as:
 * [Sensitivity and residual analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#testing-machine-learning-models-for-accuracy-trustworthiness-and-stability-with-python-and-h2o---notebook)
 
 The notebooks can be accessed through:
-* [O'Reilly Safari](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
-* [Docker container](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation-recommended)
-* [Manual installation](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
+* [O'Reilly Safari (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
+* [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
+* [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
+* [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
 ***
 
