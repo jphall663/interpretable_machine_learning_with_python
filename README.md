@@ -2,18 +2,20 @@
 
 ### Overview
 
-Usage of AI and machine learning models is likely to become more commonplace as larger swaths of the economy embrace automation and data-driven decision-making. While these predictive systems can be quite accurate, they are usually treated as inscrutable black boxes that produce only numeric predictions with no accompanying explanations. Unfortunately, recent studies and recent events have drawn attention to mathematical and sociological flaws in prominent weak AI and ML systems, but practitioners don’t often have the right tools to pry open machine learning models and debug them. This series of notebooks introduces several approaches to that increase transparency, accountability, and trustworthiness in machine learning models. If you are a data scientist or analyst and you want to explain a machine learning model to your customers or managers (or if you have concerns about documentation, validation, or regulatory requirements), then this series of Jupyter notebooks is for you!
+Usage of AI and machine learning models is likely to become more commonplace as larger swaths of the economy embrace automation and data-driven decision-making. While these predictive systems can be quite accurate, they are usually treated as inscrutable black boxes that produce only numeric predictions with no accompanying explanations. Unfortunately, recent studies and recent events have drawn attention to mathematical and sociological flaws in prominent weak AI and ML systems, but practitioners don’t often have the right tools to pry open machine learning models and debug them. This series of notebooks introduces several approaches to that increase transparency, accountability, and trustworthiness in machine learning models. If you are a data scientist or analyst and you want to explain a machine learning model to your customers or managers (or if you have concerns about documentation, validation, or regulatory requirements), then this series of Jupyter notebooks is for you! (But *please* don't take these notebooks or associated materials as legal compliance advice.)
 
 The notebooks highlight techniques such as:
 * [Monotonic XGBoost models, partial dependence, individual conditional expectation plots, and Shapley explanations](https://github.com/jphall663/interpretable_machine_learning_with_python#enhancing-transparency-in-machine-learning-models-with-python-and-xgboost---notebook)
 * [Decision tree surrogates, reason codes, and ensembles of explanations](https://github.com/jphall663/interpretable_machine_learning_with_python#increase-transparency-and-accountability-in-your-machine-learning-project-with-python---notebook)
+* [Disparate Impact Analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#increase-fairness-in-your-machine-learning-project-with-disparate-impact-analysis-using-python-and-h2o---notebook)
 * [LIME](https://github.com/jphall663/interpretable_machine_learning_with_python#explain-your-predictive-models-to-business-stakeholders-with-lime-using-python-and-h2o---notebook)
 * [Sensitivity and residual analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#testing-machine-learning-models-for-accuracy-trustworthiness-and-stability-with-python-and-h2o---notebook)
 
 The notebooks can be accessed through:
-* [O'Reilly Safari](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
-* [Docker container](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation-recommended)
-* [Manual installation](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
+* [O'Reilly Safari (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
+* [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
+* [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
+* [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
 ***
 
@@ -34,6 +36,13 @@ Gradient boosting machines (GBMs) and other complex machine learning models are 
 
 To get a better picture of the complex model’s local behavior and to enhance the accountability of the model’s predictions, we will use a variant of the leave-one-covariate-out (LOCO) technique. LOCO enables us to calculate the local contribution each input variable makes toward each model prediction. We will then rank the local contributions to generate reason codes that describe, in plain English, the model’s decision process for every prediction.
 
+### Increase Fairness in Your Machine Learning Project with Disparate Impact Analysis using Python and H2O - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/dia.ipynb)
+
+<img src="./readme_pics/dia.png" height="400">
+
+Fairness is an incredibly important, but highly complex entity. So much so that leading scholars have yet to agree on a strict definition. However, there is a practical way to discuss and handle *observational* fairness, or how your model predictions affect different groups of people. This procedure is known as disparate impact analysis (DIA). DIA is far from perfect, as it relies heavily on user-defined thresholds and reference levels for disparity and does not attempt to remediate disparity or provide information on sources of disparity, but it is a fairly straightforward method to quantify your model’s behavior across sensitive demographic segments or other potentially interesting groups of observations. DIA is also an accepted, regulation-compliant tool for fair-lending purposes in the U.S. financial services industry. If it’s good enough for multibillion-dollar credit portfolios, it’s probably good enough for your project.
+
+This example DIA notebook starts by training a gradient boosting machine (GBM) classifier on the UCI credit card default data using the popular open source library, h2o. A probability cutoff for making credit decisions is selected by maximizing the F1 statistic and confusion matrices are generated to summarize the GBM’s decisions across customers with different education levels. A basic DIA procedure is then conducted using the information stored in the confusion matrices.
 
 ### Explain Your Predictive Models to Business Stakeholders with LIME using Python and H2O - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/lime.ipynb)
 
@@ -65,9 +74,33 @@ The ideal way to use these notebook is through [O'Reilly Safari](https://www.saf
 
 To use these notebooks outside of the Safari platform, follow the instructions below.
 
-### Docker Installation (recommended)
+### H2O Aquarium (recommended)
 
-A Dockerfile is provided to build a docker container with all necessary packages and dependencies. This is the easiest way to use these examples if you are on Mac OS X, \*nix, or Windows 10. To do so:
+H2O Aquarium is a free educational environment that hosts these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
+
+1. Navigate to the Aquarium URL: https://aquarium.h2o.ai
+
+2. Create a new Aquarium account.
+
+3. Check the registered email inbox and use the temporary password to login to Aquarium.
+
+4. Click `Browse Labs.`
+
+5. Click `View Detail` under *Patrick Hall’s MLI Tutorial*.
+
+6. Click `Start Lab` (This can take several minutes).
+
+7. Click on the *Jupyter URL* when it becomes available.
+
+8. Enter the token `h2o`.
+
+9. Browse/run the Jupyter notebooks.
+
+10. Click `End Lab` when you are finished.
+
+### Docker Installation
+
+A Dockerfile is provided to build a docker container with all necessary packages and dependencies. This is a way to use these examples if you are on Mac OS X, \*nix, or Windows 10. To do so:
 
 1. Install and start [docker](https://www.docker.com/).
 
