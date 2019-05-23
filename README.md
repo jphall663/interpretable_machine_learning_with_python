@@ -10,6 +10,8 @@ The notebooks highlight techniques such as:
 * [Disparate Impact Analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#increase-fairness-in-your-machine-learning-project-with-disparate-impact-analysis-using-python-and-h2o---notebook)
 * [LIME](https://github.com/jphall663/interpretable_machine_learning_with_python#explain-your-predictive-models-to-business-stakeholders-with-lime-using-python-and-h2o---notebook)
 * [Sensitivity and residual analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#testing-machine-learning-models-for-accuracy-trustworthiness-and-stability-with-python-and-h2o---notebook)
+  * [Advanced sensitivity analysis for model debugging]()
+  * Advanced residual analysis for model debugging (coming soon!)
 
 The notebooks can be accessed through:
 * [O'Reilly Safari (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
@@ -60,6 +62,13 @@ Because machine learning model predictions can vary drastically for small change
 Sensitivity analysis investigates whether model behavior and outputs remain stable when input data is intentionally perturbed, or other changes are simulated in input data. In this notebook, we will enhance trust in a complex credit default model by testing and debugging its predictions with sensitivity analysis.
 
 We’ll further enhance trust in our model using residual analysis. Residuals refer to the difference between the recorded value of a target variable and the predicted value of a target variable for each row in a data set. Generally, the residuals of a well-fit model should be randomly distributed, because good models will account for most phenomena in a data set, except for random error. In this notebook, we will create residual plots for a complex model to debug any accuracy problems arising from overfitting or outliers.
+
+### All Model are Wrong ... but Why is My Model Wrong ??
+##### Part 1: Sensitivity Analysis - [Notebook](https://github.com/jphall663/interpretable_machine_learning_with_python/blob/master/debugging_sens_analysis_redux.ipynb)
+
+![](/readme_pics/sa.png)
+
+This notebook focuses on using sensitivity analysis to discover error mechanisms and security vulnerabilities and to assess stability and fairness in a trained XGBoost model. It begins by loading the UCI credit card default data and then training an interpretable, monotonically constrained XGBoost gradient boosting machine (GBM) model. After the model is trained, global and local Shapley feature importance is calculated. These Shapley values help inform the application of partial dependence and ICE, and together these results guide a search for adversarial examples. The notebook closes by exposing the trained model to a random attack and analyzing the attack results. These model debugging exercises uncover several accuracy, drift, and security problems such as over-emphasis of important features and impactful yet non-robust interactions. Several remediation mechanisms are proposed including editing of final model artifacts to remove or fix errors, missing value injection during training to lessen the impact of certain features or interactions, and assertion-based missing value injection during scoring to mitigate the effect of non-robust interactions.
 
 ## Using the Examples
 
