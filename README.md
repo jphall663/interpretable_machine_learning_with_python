@@ -7,7 +7,7 @@ Usage of AI and machine learning models is likely to become more commonplace as 
 The notebooks highlight techniques such as:
 * [Monotonic XGBoost models, partial dependence, individual conditional expectation plots, and Shapley explanations](https://github.com/jphall663/interpretable_machine_learning_with_python#enhancing-transparency-in-machine-learning-models-with-python-and-xgboost---notebook)
 * [Decision tree surrogates, reason codes, and ensembles of explanations](https://github.com/jphall663/interpretable_machine_learning_with_python#increase-transparency-and-accountability-in-your-machine-learning-project-with-python---notebook)
-* [Disparate Impact Analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#increase-fairness-in-your-machine-learning-project-with-disparate-impact-analysis-using-python-and-h2o---notebook)
+* [Disparate impact analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#increase-fairness-in-your-machine-learning-project-with-disparate-impact-analysis-using-python-and-h2o---notebook)
 * [LIME](https://github.com/jphall663/interpretable_machine_learning_with_python#explain-your-predictive-models-to-business-stakeholders-with-lime-using-python-and-h2o---notebook)
 * [Sensitivity and residual analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#testing-machine-learning-models-for-accuracy-trustworthiness-and-stability-with-python-and-h2o---notebook)
   * [Advanced sensitivity analysis for model debugging](https://github.com/jphall663/interpretable_machine_learning_with_python#part-1-sensitivity-analysis---notebook)
