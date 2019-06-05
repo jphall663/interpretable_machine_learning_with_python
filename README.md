@@ -19,6 +19,9 @@ The notebooks can be accessed through:
 * [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
+
+For a technical write-up on these topics, please [_On the Art and Science of Explainable Machine Learning_](https://arxiv.org/pdf/1810.02909.pdf).
+
 ***
 
 ### Enhancing Transparency in Machine Learning Models with Python and XGBoost - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/xgboost_pdp_ice.ipynb?flush_cache=true)
