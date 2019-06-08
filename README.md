@@ -20,7 +20,7 @@ The notebooks can be accessed through:
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
 
-For a technical write-up on these topics, please [_On the Art and Science of Explainable Machine Learning_](https://arxiv.org/pdf/1810.02909.pdf).
+For a technical write-up on these topics, please see [_On the Art and Science of Explainable Machine Learning_](https://arxiv.org/pdf/1810.02909.pdf).
 
 ***
 
