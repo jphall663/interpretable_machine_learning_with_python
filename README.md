@@ -15,7 +15,7 @@ The notebooks highlight techniques such as:
 
 The notebooks can be accessed through:
 * [O'Reilly Safari (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
-* [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
+* [H2O Aquarium (Temporarily unavailable)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
 * [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
