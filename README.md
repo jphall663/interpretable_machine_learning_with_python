@@ -86,7 +86,7 @@ The ideal way to use these notebook is through [O'Reilly Safari](https://www.saf
 
 To use these notebooks outside of the Safari platform, follow the instructions below.
 
-### H2O Aquarium (recommended)
+### H2O Aquarium (Temporarily unavailable - I will get this backup as soon as I can)
 
 H2O Aquarium is a free educational environment that hosts these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
 
