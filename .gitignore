@@ -1,5 +1,5 @@
 .ipynb_checkpoints/
 .DS_store
-surrogate*.gv
-surrogate*.png
-surrogate*.zip
+tree*.gv
+tree*.png
+tree*.zip
