@@ -11,20 +11,23 @@ The notebooks highlight techniques such as:
 * [LIME](https://github.com/jphall663/interpretable_machine_learning_with_python#explain-your-predictive-models-to-business-stakeholders-with-lime-using-python-and-h2o---notebook)
 * [Sensitivity and residual analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#testing-machine-learning-models-for-accuracy-trustworthiness-and-stability-with-python-and-h2o---notebook)
   * [Advanced sensitivity analysis for model debugging](https://github.com/jphall663/interpretable_machine_learning_with_python#part-1-sensitivity-analysis---notebook)
-  * Advanced residual analysis for model debugging (coming soon!)
+  * [Advanced residual analysis for model debugging](https://github.com/jphall663/interpretable_machine_learning_with_python#part-2-residual-analysis---notebook)
 
 The notebooks can be accessed through:
 * [O'Reilly Safari (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
-* [H2O Aquarium (Temporarily unavailable)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
+* [H2O Aquarium (Temporarily Unavailable)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
 * [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
+For recent presentations and publications related to these materials, please see:
 
-For a technical write-up on these topics, please see [_On the Art and Science of Explainable Machine Learning_](https://arxiv.org/pdf/1810.02909.pdf).
+* [*On the Art and Science of Explainable Machine Learning*](https://github.com/jphall663/kdd_2019/blob/master/kdd_2019.pdf) - accepted paper [2019 KDD XAI Workshop](https://xai.kdd2019.a.intuit.com/)
+* [*Responsible Use of Explainable Artificial Intelligence*](https://github.com/jphall663/kdd_2019/blob/master/main.pdf) - invited keynote presentation [2019 KDD XAI Workshop](https://xai.kdd2019.a.intuit.com/)
+* [*Increasing Trust and Understanding in Machine Learning with Model Debugging*](https://github.com/jphall663/jsm_2019/blob/master/main.pdf) - invited presentation [2019 JSM Interpreting Machine Learning Models Session](https://ww2.amstat.org/meetings/jsm/2019/onlineprogram/ActivityDetails.cfm?SessionID=218142)
 
 ***
 
-### Enhancing Transparency in Machine Learning Models with Python and XGBoost - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/xgboost_pdp_ice.ipynb?flush_cache=true)
+### Enhancing Transparency in Machine Learning Models with Python and XGBoost - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/xgboost_pdp_ice.ipynb)
 
 ![](./readme_pics/pdp_ice.png)
 
@@ -33,7 +36,7 @@ Monotonicity constraints can turn opaque, complex models into transparent, and p
 Once we have trained a monotonic XGBoost model, we will use partial dependence plots and individual conditional expectation (ICE) plots to investigate the internal mechanisms of the model and to verify its monotonic behavior. Partial dependence plots show us the way machine-learned response functions change based on the values of one or two input variables of interest, while averaging out the effects of all other input variables. ICE plots can be used to create more localized descriptions of model predictions, and ICE plots pair nicely with partial dependence plots. An example of generating regulator mandated reason codes from high fidelity Shapley explanations for any model prediction is also presented. The combination of monotonic XGBoost, partial dependence, ICE, and Shapley explanations is likely the most direct way to create an interpretable machine learning model today.
 
 
-### Increase Transparency and Accountability in Your Machine Learning Project with Python - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/dt_surrogate_loco.ipynb?flush_cache=true)
+### Increase Transparency and Accountability in Your Machine Learning Project with Python - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/dt_surrogate_loco.ipynb)
 
 ![](./readme_pics/dt_surrogate.png)
 
@@ -41,7 +44,7 @@ Gradient boosting machines (GBMs) and other complex machine learning models are 
 
 To get a better picture of the complex model’s local behavior and to enhance the accountability of the model’s predictions, we will use a variant of the leave-one-covariate-out (LOCO) technique. LOCO enables us to calculate the local contribution each input variable makes toward each model prediction. We will then rank the local contributions to generate reason codes that describe, in plain English, the model’s decision process for every prediction.
 
-### Increase Fairness in Your Machine Learning Project with Disparate Impact Analysis using Python and H2O - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/dia.ipynb?flush_cache=true)
+### Increase Fairness in Your Machine Learning Project with Disparate Impact Analysis using Python and H2O - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/dia.ipynb)
 
 <img src="./readme_pics/dia.png" height="400">
 
@@ -49,7 +52,7 @@ Fairness is an incredibly important, but highly complex entity. So much so that 
 
 This example DIA notebook starts by training a gradient boosting machine (GBM) classifier on the UCI credit card default data using the popular open source library, h2o. A probability cutoff for making credit decisions is selected by maximizing the F1 statistic and confusion matrices are generated to summarize the GBM’s decisions across customers with different education levels. A basic DIA procedure is then conducted using the information stored in the confusion matrices.
 
-### Explain Your Predictive Models to Business Stakeholders with LIME using Python and H2O - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/lime.ipynb?flush_cache=true)
+### Explain Your Predictive Models to Business Stakeholders with LIME using Python and H2O - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/lime.ipynb)
 
 ![](./readme_pics/lime.png)
 
@@ -57,7 +60,7 @@ Machine learning can create very accurate predictive models, but these models ca
 
 Once local samples have been generated, we will fit LIME models to understand local trends in the complex model’s predictions. LIME can also tell us the local contribution of each input variable toward each model prediction, and these contributions can be sorted to create reason codes -- plain English explanations of every model prediction. We will also validate the fit of the LIME model to enhance trust in our explanations using the local model’s R<sup>2</sup> statistic and a ranked predictions plot.
 
-### Testing Machine Learning Models for Accuracy, Trustworthiness, and Stability with Python and H2O - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/resid_sens_analysis.ipynb?flush_cache=true)
+### Testing Machine Learning Models for Accuracy, Trustworthiness, and Stability with Python and H2O - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/resid_sens_analysis.ipynb)
 
 ![](./readme_pics/resid.png)
 
@@ -67,7 +70,7 @@ Sensitivity analysis investigates whether model behavior and outputs remain stab
 We’ll further enhance trust in our model using residual analysis. Residuals refer to the difference between the recorded value of a target variable and the predicted value of a target variable for each row in a data set. Generally, the residuals of a well-fit model should be randomly distributed, because good models will account for most phenomena in a data set, except for random error. In this notebook, we will create residual plots for a complex model to debug any accuracy problems arising from overfitting or outliers.
 
 ### Machine Learning Model Debugging with Python: All Models are Wrong ... but Why is _My_ Model Wrong? (And Can I Fix It?)
-##### Part 1: Sensitivity analysis - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/debugging_sens_analysis_redux.ipynb?flush_cache=true)
+##### Part 1: Sensitivity analysis - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/debugging_sens_analysis_redux.ipynb)
 
 ![](/readme_pics/sa.png)
 
@@ -77,6 +80,7 @@ Sensitivity analysis is the perturbation of data under a trained model. It can t
 
 ![](readme_pics/resid2.png)
 
+In general, residual analysis could be characterized as the careful study of when and how models make mistakes. A better understanding of mistakes will hopefully lead to less of them. This notebook uses variants of residual analysis to find error mechanisms and security vulnerabilities and to assess stability and fairness in a trained XGBoost model. It begins by loading the UCI credit card default data and then training an interpretable, monotonically constrained XGBoost gradient boosting machine (GBM) model. (Pearson correlation with the prediction target is used to determine the direction of the monotonicity constraints for each input variable.) After the model is trained, its logloss residuals are analyzed and explained thoroughly and the constrained GBM is compared to a benchmark linear model. These model debugging exercises uncover several accuracy, drift, and security problems such as over-emphasis of important variables and strong signal in model residuals. Several remediation mechanisms are proposed including missing value injection during training, additional data collection, and use of assertions to correct known problems during scoring.
 
 ## Using the Examples
 
@@ -91,7 +95,7 @@ The ideal way to use these notebook is through [O'Reilly Safari](https://www.saf
 
 To use these notebooks outside of the Safari platform, follow the instructions below.
 
-### H2O Aquarium (Temporarily unavailable - I will get this backup as soon as I can)
+### H2O Aquarium (temporarily unavailable)
 
 H2O Aquarium is a free educational environment that hosts these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
 
