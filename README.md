@@ -70,6 +70,7 @@ Sensitivity analysis investigates whether model behavior and outputs remain stab
 We’ll further enhance trust in our model using residual analysis. Residuals refer to the difference between the recorded value of a target variable and the predicted value of a target variable for each row in a data set. Generally, the residuals of a well-fit model should be randomly distributed, because good models will account for most phenomena in a data set, except for random error. In this notebook, we will create residual plots for a complex model to debug any accuracy problems arising from overfitting or outliers.
 
 ### Machine Learning Model Debugging with Python: All Models are Wrong ... but Why is _My_ Model Wrong? (And Can I Fix It?)
+
 ##### Part 1: Sensitivity analysis - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/debugging_sens_analysis_redux.ipynb)
 
 ![](/readme_pics/sa.png)
