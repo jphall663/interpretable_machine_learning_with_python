@@ -70,6 +70,11 @@ We’ll further enhance trust in our model using residual analysis. Residuals re
 
 Sensitivity analysis is the perturbation of data under a trained model. It can take many forms and arguably Shapley feature importance, partial dependence and individual conditional expectation, and adversarial examples are all types of sensitvity analysis. This notebook focuses on using these different types of sensitivity analysis to discover error mechanisms and security vulnerabilities and to assess stability and fairness in a trained XGBoost model. It begins by loading the UCI credit card default data and then training an interpretable, monotonically constrained XGBoost gradient boosting machine (GBM) model. After the model is trained, global and local Shapley feature importance is calculated. These Shapley values help inform the application of partial dependence and ICE, and together these results guide a search for adversarial examples. The notebook closes by exposing the trained model to a random attack and analyzing the attack results. These model debugging exercises uncover several accuracy, drift, and security problems such as over-emphasis of important features and impactful yet non-robust interactions. Several remediation mechanisms are proposed including editing of final model artifacts to remove or fix errors, missing value injection or regularization during training to lessen the impact of certain features or interactions, and assertion-based missing value injection during scoring to mitigate the effect of non-robust interactions.
 
+##### Part 2: Residual Analysis - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/ debugging_resid_analysis_redux.ipynb)
+
+![](readme_pics/resid2.png)
+
+
 ## Using the Examples
 
 ### O'Reilly Safari (recommended)
