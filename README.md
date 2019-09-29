@@ -100,7 +100,7 @@ To use these notebooks outside of the Safari platform, follow the instructions b
 
 H2O Aquarium is a free educational environment that hosts these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
 
-1. Navigate to the Aquarium URL: https://aquarium.h2o.ai
+1. Navigate to the Aquarium URL: https://aquarium.h2o.ai.
 
 2. Create a new Aquarium account.
 
