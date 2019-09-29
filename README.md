@@ -15,7 +15,7 @@ The notebooks highlight techniques such as:
 
 The notebooks can be accessed through:
 * [O'Reilly Safari (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
-* [H2O Aquarium (Temporarily Unavailable)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
+* [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
 * [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
@@ -96,7 +96,7 @@ The ideal way to use these notebook is through [O'Reilly Safari](https://www.saf
 
 To use these notebooks outside of the Safari platform, follow the instructions below.
 
-### H2O Aquarium (temporarily unavailable)
+### H2O Aquarium (recommended)
 
 H2O Aquarium is a free educational environment that hosts these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
 
@@ -108,7 +108,7 @@ H2O Aquarium is a free educational environment that hosts these notebooks among 
 
 4. Click `Browse Labs.`
 
-5. Click `View Detail` under *Patrick Hall’s MLI Tutorial*.
+5. Click `View Detail` under *Open Source MLI Workshop*.
 
 6. Click `Start Lab` (This can take several minutes).
 
@@ -116,9 +116,11 @@ H2O Aquarium is a free educational environment that hosts these notebooks among 
 
 8. Enter the token `h2o`.
 
-9. Browse/run the Jupyter notebooks.
+9. Click the `patrick_hall_mli` folder.
 
-10. Click `End Lab` when you are finished.
+10. Browse/run the Jupyter notebooks.
+
+11. Click `End Lab` when you are finished.
 
 ### Docker Installation
 
