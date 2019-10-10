@@ -21,8 +21,8 @@ The notebooks can be accessed through:
 
 For recent presentations and publications related to these materials, please see:
 
-* [*On the Art and Science of Explainable Machine Learning*](https://github.com/jphall663/kdd_2019/blob/master/kdd_2019.pdf) - accepted paper [2019 KDD XAI Workshop](https://xai.kdd2019.a.intuit.com/)
-* [*Responsible Use of Explainable Artificial Intelligence*](https://github.com/jphall663/kdd_2019/blob/master/main.pdf) - invited keynote presentation [2019 KDD XAI Workshop](https://xai.kdd2019.a.intuit.com/)
+* [*On the Art and Science of Explainable Machine Learning*](https://github.com/jphall663/kdd_2019/blob/master/kdd_2019.pdf) - accepted paper 2019 KDD XAI Workshop
+* [*Responsible Use of Explainable Artificial Intelligence*](https://github.com/jphall663/kdd_2019/blob/master/main.pdf) - invited keynote presentation 2019 KDD XAI Workshop
 * [*Increasing Trust and Understanding in Machine Learning with Model Debugging*](https://github.com/jphall663/jsm_2019/blob/master/main.pdf) - invited presentation [2019 JSM Interpreting Machine Learning Models Session](https://ww2.amstat.org/meetings/jsm/2019/onlineprogram/ActivityDetails.cfm?SessionID=218142)
 
 ***
