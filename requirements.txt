@@ -1,0 +1,14 @@
+# Python 3.6.3 |Anaconda, Inc.| (default, Oct 13 2017, 12:02:49)
+# [GCC 7.2.0] on linux
+# also required: `apt-get -y install graphviz`
+
+h2o==3.26.0.3
+jupyter==1.0.0
+matplotlib==2.1.0
+numpy==1.16.0
+pandas==0.23.4
+scikit-learn==0.19.1
+seaborn==0.8.1
+shap==0.28.0
+xgboost==0.7.post3
+xlrd==1.1.0

@@ -1,5 +1,7 @@
 .ipynb_checkpoints/
 .DS_store
-tree*.gv
+*.gv
+dt_surrogate_mojo.png
 tree*.png
-tree*.zip
+*.zip
+env*
