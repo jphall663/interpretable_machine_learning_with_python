@@ -14,16 +14,9 @@ The notebooks highlight techniques such as:
   * [Advanced residual analysis for model debugging](https://github.com/jphall663/interpretable_machine_learning_with_python#part-2-residual-analysis---notebook)
 
 The notebooks can be accessed through:
-* [O'Reilly Safari (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#oreilly-safari-recommended)
 * [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
 * [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
-
-For recent presentations and publications related to these materials, please see:
-
-* [*On the Art and Science of Explainable Machine Learning*](https://github.com/jphall663/kdd_2019/blob/master/kdd_2019.pdf) - accepted paper 2019 KDD XAI Workshop
-* [*Responsible Use of Explainable Artificial Intelligence*](https://github.com/jphall663/kdd_2019/blob/master/main.pdf) - invited keynote presentation 2019 KDD XAI Workshop
-* [*Increasing Trust and Understanding in Machine Learning with Model Debugging*](https://github.com/jphall663/jsm_2019/blob/master/main.pdf) - invited presentation [2019 JSM Interpreting Machine Learning Models Session](https://ww2.amstat.org/meetings/jsm/2019/onlineprogram/ActivityDetails.cfm?SessionID=218142)
 
 ***
 
@@ -85,17 +78,6 @@ In general, residual analysis could be characterized as the careful study of whe
 
 ## Using the Examples
 
-### O'Reilly Safari (recommended)
-
-The ideal way to use these notebook is through [O'Reilly Safari](https://www.safaribooksonline.com/). Doing so will enable video narration by the notebook author and no installation of software packages is required. Individual lessons can be accessed below on Safari.
-
-* [VIDEO: Monotonic XGBoost models, partial dependence, and individual conditional expectation plots](https://www.safaribooksonline.com/oriole/enhancing-transparency-in-machine-learning-models-with-python-and-xgboost)
-* [VIDEO: Decision tree surrogates, reason codes, and ensembles of explanations](https://www.safaribooksonline.com/oriole/increase-transparency-and-accountability-in-your-machine-learning-project-with-python)
-* [VIDEO: LIME](https://www.safaribooksonline.com/oriole/explain-your-predictive-models-to-business-stakeholders-w-lime-python-h2o)
-* [VIDEO: Sensitivity and residual analysis](https://www.safaribooksonline.com/oriole/testing-ml-models-for-accuracy-trustworthiness-stability-with-python-and-h2o)
-
-To use these notebooks outside of the Safari platform, follow the instructions below.
-
 ### H2O Aquarium (recommended)
 
 H2O Aquarium is a free educational environment that hosts these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
@@ -121,6 +103,7 @@ H2O Aquarium is a free educational environment that hosts these notebooks among 
 10. Browse/run the Jupyter notebooks.
 
 11. Click `End Lab` when you are finished.
+
 
 ### Docker Installation
 
