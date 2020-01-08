@@ -137,20 +137,17 @@ From a terminal:
 `$ curl https://raw.githubusercontent.com/jphall663/interpretable_machine_learning_with_python/master/anaconda_py36_h2o_xgboost_graphviz_shap/Dockerfile > anaconda_py36_h2o_xgboost_graphviz_shap/Dockerfile`
 
 4. Build a docker image from the Dockefile.</br>
-`$ docker build anaconda_py36_h2o_xgboost_graphviz_shap`
+`docker build -t iml anaconda_py36_h2o_xgboost_graphviz_shap`
 
-5. Display docker image IDs. You are probably interested in the most recently created image. </br>
-`$ docker images`
+5. Start the docker image and the Jupyter notebook server.</br>
+ `docker run -i -t -p 8888:8888 iml:latest /bin/bash -c "/opt/conda/bin/jupyter notebook --notebook-dir=/interpretable_machine_learning_with_python --allow-root --ip='*' --port=8888 --no-browser"`
 
-6. Start the docker image and the Jupyter notebook server.</br>
- `$ docker run -i -t -p 8888:8888 <image_id> /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/interpretable_machine_learning_with_python --allow-root --ip='*' --port=8888 --no-browser"`
-
-7. Navigate to port 8888 on your machine, probably `http://localhost:8888/`.
+6. Navigate to port 8888 on your machine, probably `http://localhost:8888/`.
 
 
 ### Manual Installation
 
-1. Anaconda Python 5.1.0 from the [Anaconda archives](https://repo.continuum.io/archive/) along with the [seaborn](https://pypi.python.org/pypi/seaborn) package.
+1. Anaconda Python 5.1.0 from the [Anaconda archives](https://repo.continuum.io/archive/).
 2. [Java](https://java.com/download).
 3. The latest stable [h2o](https://www.h2o.ai/download/) Python package.
 4. [Git](https://git-scm.com/downloads).
