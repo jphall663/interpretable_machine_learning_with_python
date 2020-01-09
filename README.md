@@ -1,4 +1,6 @@
 # Responsible Machine Learning with Python
+Practical techniques for training interpretable ML models, explaining ML models, and debugging ML models for accuracy, discrimination, and security.
+
 
 ### Overview
 
