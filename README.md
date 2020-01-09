@@ -17,7 +17,7 @@ The notebooks highlight techniques such as:
 
 The notebooks can be accessed through:
 * [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
-* [Virtualenv (Advanced)]()
+* [Virtualenv (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#virtualenv-installation)
 * [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
@@ -120,7 +120,7 @@ H2O Aquarium is a free educational environment that hosts these notebooks among 
 `$ cd interpretable_machine_learning_with_python`
 
 5. Create a Python 3.6 virtual environment.</br>
-`$ virtualenv -p /path/to/anaconda3/bin/python3.6 env_iml`.
+`$ virtualenv -p /path/to/anaconda3/bin/python3.6 env_iml`
 
 6. Activate the virtual environment.</br>
 `$ source env_iml/bin/activate`
