@@ -1,4 +1,4 @@
-# Interpretable Machine Learning with Python
+# Responsible Machine Learning with Python
 
 ### Overview
 
