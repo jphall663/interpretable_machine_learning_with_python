@@ -17,6 +17,7 @@ The notebooks highlight techniques such as:
 
 The notebooks can be accessed through:
 * [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
+* [Virtualenv (Advanced)]()
 * [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
@@ -106,12 +107,36 @@ H2O Aquarium is a free educational environment that hosts these notebooks among 
 
 11. Click `End Lab` when you are finished.
 
+### Virtualenv Installation
+
+1. Install [Git](https://git-scm.com/downloads).
+
+2. Clone this repository with the examples.</br>
+`$ git clone https://github.com/jphall663/interpretable_machine_learning_with_python.git`
+
+3. Install Anaconda Python 5.1.0 from the [Anaconda archives](https://repo.continuum.io/archive/) and add it to your system path.
+
+4. Change directories into the cloned repository.</br>
+`$ cd interpretable_machine_learning_with_python`
+
+5. Create a Python 3.6 virtual environment.</br>
+`$ virtualenv -p /path/to/anaconda3/bin/python3.6 env_iml`.
+
+6. Activate the virtual environment.</br>
+`$ source env_iml/bin/activate`
+
+7. Install the correct packages for the example notebooks.</br>
+`$ pip install -r requirements.txt`
+
+8. Start Jupyter.</br>
+`$ jupyter notebook`
 
 ### Docker Installation
 
 A Dockerfile is provided to build a docker container with all necessary packages and dependencies. This is a way to use these examples if you are on Mac OS X, \*nix, or Windows 10. To do so:
 
-1. Install and start [docker](https://www.docker.com/).
+1. Clone the example notebooks
+2. Install and start [docker](https://www.docker.com/).
 
 From a terminal:
 
