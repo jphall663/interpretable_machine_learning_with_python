@@ -105,7 +105,7 @@ H2O Aquarium is a free educational environment that hosts versions of these note
 
 5. Click `View Detail` under *Open Source MLI Workshop*.
 
-6. Click `Start Lab` (This can take several minutes).
+6. Click `Start Lab` (this can take several minutes).
 
 7. Click on the *Jupyter URL* when it becomes available.
 
