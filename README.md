@@ -21,6 +21,15 @@ The notebooks can be accessed through:
 * [Docker container (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#docker-installation)
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
+#### Further reading:
+* [*An Introduction to Machine Learning Interpretability, 2nd Edition*](https://www.h2o.ai/wp-content/uploads/2019/08/An-Introduction-to-Machine-Learning-Interpretability-Second-Edition.pdf)
+* [*On the Art and Science of Explainable Machine Learning*](https://arxiv.org/pdf/1810.02909.pdf)
+* [*Proposals for model vulnerability and security*](https://www.oreilly.com/ideas/proposals-for-model-vulnerability-and-security)
+* [*Proposed Guidelines for the Responsible Use of Explainable Machine Learning*](https://arxiv.org/pdf/1906.03533.pdf)
+* [*Real-World Strategies for Model Debugging*](https://medium.com/@jphall_22520/strategies-for-model-debugging-aa822f1097ce)
+* [*Warning Signs: Security and Privacy in an Age of Machine Learning*](https://fpf.org/wp-content/uploads/2019/09/FPF_WarningSigns_Report.pdf)
+* [*Why you should care about debugging machine learning models*](https://www.oreilly.com/radar/why-you-should-care-about-debugging-machine-learning-models/)
+
 ***
 
 ### Enhancing Transparency in Machine Learning Models with Python and XGBoost - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/xgboost_pdp_ice.ipynb)
