@@ -1,10 +1,10 @@
 # Responsible Machine Learning with Python
-Practical techniques for training interpretable ML models, explaining ML models, and debugging ML models for accuracy, discrimination, and security.
+Examples of techniques for training interpretable ML models, explaining ML models, and debugging ML models for accuracy, discrimination, and security.
 
 
 ### Overview
 
-Usage of AI and machine learning models is likely to become more commonplace as larger swaths of the economy embrace automation and data-driven decision-making. While these predictive systems can be quite accurate, they are usually treated as inscrutable black boxes that produce only numeric predictions with no accompanying explanations. Unfortunately, recent studies and recent events have drawn attention to mathematical and sociological flaws in prominent weak AI and ML systems, but practitioners don’t often have the right tools to pry open machine learning models and debug them. This series of notebooks introduces several approaches to that increase transparency, accountability, and trustworthiness in machine learning models. If you are a data scientist or analyst and you want to explain a machine learning model to your customers or managers (or if you have concerns about documentation, validation, or regulatory requirements), then this series of Jupyter notebooks is for you! (But *please* don't take these notebooks or associated materials as legal compliance advice.)
+Usage of AI and machine learning models is likely to become more commonplace as larger swaths of the economy embrace automation and data-driven decision-making. While these predictive systems can be quite accurate, they have often been inscrutable and unappealable black boxes that produce only numeric predictions with no accompanying explanations. Unfortunately, recent studies and recent events have drawn attention to mathematical and sociological flaws in prominent weak AI and ML systems, but practitioners don’t often have the right tools to pry open machine learning models and debug them. This series of notebooks introduces several approaches that increase transparency, accountability, and trustworthiness in machine learning models. If you are a data scientist or analyst and you want to train accurate, interpretable machine learning models, explain the machine learning model to your customers or managers, test those models for security vulnerabilities or social discrimination,  or if you have concerns about documentation, validation, or regulatory requirements, then this series of Jupyter notebooks is for you! (But *please* don't take these notebooks or associated materials as legal compliance advice.)
 
 The notebooks highlight techniques such as:
 * [Monotonic XGBoost models, partial dependence, individual conditional expectation plots, and Shapley explanations](https://github.com/jphall663/interpretable_machine_learning_with_python#enhancing-transparency-in-machine-learning-models-with-python-and-xgboost---notebook)
@@ -29,7 +29,7 @@ The notebooks can be accessed through:
 
 Monotonicity constraints can turn opaque, complex models into transparent, and potentially regulator-approved models, by ensuring predictions only increase or only decrease for any change in a given input variable. In this notebook, I will demonstrate how to use monotonicity constraints in the popular open source gradient boosting package XGBoost to train a simple, accurate, nonlinear classifier on the UCI credit card default data.
 
-Once we have trained a monotonic XGBoost model, we will use partial dependence plots and individual conditional expectation (ICE) plots to investigate the internal mechanisms of the model and to verify its monotonic behavior. Partial dependence plots show us the way machine-learned response functions change based on the values of one or two input variables of interest, while averaging out the effects of all other input variables. ICE plots can be used to create more localized descriptions of model predictions, and ICE plots pair nicely with partial dependence plots. An example of generating regulator mandated reason codes from high fidelity Shapley explanations for any model prediction is also presented. The combination of monotonic XGBoost, partial dependence, ICE, and Shapley explanations is likely the most direct way to create an interpretable machine learning model today.
+Once we have trained a monotonic XGBoost model, we will use partial dependence plots and individual conditional expectation (ICE) plots to investigate the internal mechanisms of the model and to verify its monotonic behavior. Partial dependence plots show us the way machine-learned response functions change based on the values of one or two input variables of interest, while averaging out the effects of all other input variables. ICE plots can be used to create more localized descriptions of model predictions, and ICE plots pair nicely with partial dependence plots. An example of generating regulator mandated reason codes from high fidelity Shapley explanations for any model prediction is also presented. The combination of monotonic XGBoost, partial dependence, ICE, and Shapley explanations is likely one of the most direct ways to create an interpretable machine learning model today.
 
 
 ### Increase Transparency and Accountability in Your Machine Learning Project with Python - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/dt_surrogate_loco.ipynb)
@@ -44,9 +44,9 @@ To get a better picture of the complex model’s local behavior and to enhance t
 
 <img src="./readme_pics/dia.png" height="400">
 
-Fairness is an incredibly important, but highly complex entity. So much so that leading scholars have yet to agree on a strict definition. However, there is a practical way to discuss and handle *observational* fairness, or how your model predictions affect different groups of people. This procedure is known as disparate impact analysis (DIA). DIA is far from perfect, as it relies heavily on user-defined thresholds and reference levels for disparity and does not attempt to remediate disparity or provide information on sources of disparity, but it is a fairly straightforward method to quantify your model’s behavior across sensitive demographic segments or other potentially interesting groups of observations. DIA is also an accepted, regulation-compliant tool for fair-lending purposes in the U.S. financial services industry. If it’s good enough for multibillion-dollar credit portfolios, it’s probably good enough for your project.
+Fairness is an incredibly important, but highly complex entity. So much so that leading scholars have yet to agree on a strict definition. However, there is a practical way to discuss and handle *observational* fairness, or how your model predictions affect different groups of people. This procedure is often known as disparate impact analysis (DIA). DIA is far from perfect, as it relies heavily on user-defined thresholds and reference levels for disparity and does not attempt to remediate disparity or provide information on sources of disparity, but it is a fairly straightforward method to quantify your model’s behavior across sensitive demographic segments or other potentially interesting groups of observations. Some types of DIA are also an accepted, regulation-compliant tool for fair-lending purposes in the U.S. financial services industry. If it’s good enough for multibillion-dollar credit portfolios, it’s probably good enough for your project.
 
-This example DIA notebook starts by training a gradient boosting machine (GBM) classifier on the UCI credit card default data using the popular open source library, h2o. A probability cutoff for making credit decisions is selected by maximizing the F1 statistic and confusion matrices are generated to summarize the GBM’s decisions across men and women. A basic DIA procedure is then conducted using the information stored in the confusion matrices.
+This example DIA notebook starts by training a monotonic gradient boosting machine (GBM) classifier on the UCI credit card default data using the popular open source library, h2o. A probability cutoff for making credit decisions is selected by maximizing the F1 statistic and confusion matrices are generated to summarize the GBM’s decisions across men and women. A basic DIA procedure is then conducted using the information stored in the confusion matrices and some traditional fair lending measures.
 
 ### Explain Your Predictive Models to Business Stakeholders with LIME using Python and H2O - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/lime.ipynb)
 
@@ -83,7 +83,7 @@ In general, residual analysis could be characterized as the careful study of whe
 
 ### H2O Aquarium (recommended)
 
-H2O Aquarium is a free educational environment that hosts these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
+H2O Aquarium is a free educational environment that hosts versions of these notebooks among many other H2o-related resources. To use these notebooks in Aquarium:
 
 1. Navigate to the Aquarium URL: https://aquarium.h2o.ai.
 
@@ -91,7 +91,7 @@ H2O Aquarium is a free educational environment that hosts these notebooks among 
 
 3. Check the registered email inbox and use the temporary password to login to Aquarium.
 
-4. Click `Browse Labs.`
+4. Click `Browse Labs`.
 
 5. Click `View Detail` under *Open Source MLI Workshop*.
 
@@ -108,6 +108,8 @@ H2O Aquarium is a free educational environment that hosts these notebooks among 
 11. Click `End Lab` when you are finished.
 
 ### Virtualenv Installation
+
+For avid Python users, creating a Python virtual environment is a convenient way to run these notebooks.
 
 1. Install [Git](https://git-scm.com/downloads).
 
@@ -135,8 +137,7 @@ H2O Aquarium is a free educational environment that hosts these notebooks among 
 
 A Dockerfile is provided to build a docker container with all necessary packages and dependencies. This is a way to use these examples if you are on Mac OS X, \*nix, or Windows 10. To do so:
 
-1. Clone the example notebooks
-2. Install and start [docker](https://www.docker.com/).
+1. Install and start [docker](https://www.docker.com/).
 
 From a terminal:
 
@@ -170,12 +171,12 @@ Anaconda Python, Java, Git, and GraphViz must be added to your system path.
 
 From a terminal:
 
-7. Clone the repository with examples.</br>
+9. Clone the repository with examples.</br>
 `$ git clone https://github.com/jphall663/interpretable_machine_learning_with_python.git`
 
-8. `$ cd interpretable_machine_learning_with_python`
+10. `$ cd interpretable_machine_learning_with_python`
 
-9. Start the Jupyter notebook server.</br>
+11. Start the Jupyter notebook server.</br>
 `$ jupyter notebook`
 
-10. Navigate to the port Jupyter directs you to on your machine, probably `http://localhost:8888/`.
+12. Navigate to the port Jupyter directs you to on your machine, probably `http://localhost:8888/`.
