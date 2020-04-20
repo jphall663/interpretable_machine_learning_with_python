@@ -35,10 +35,6 @@ the 2004 KDD Cup:
 
 """
 
-# TODO: try to use dicts instead of parallel lists
-# TODO: try to undo coupling in cv_model_rank_select using model_id
-# TODO: try to removes eval using model_id
-
 
 def glm_grid(x_names, y_name, htrain, hvalid, seed_):
 
@@ -74,7 +70,10 @@ def glm_grid(x_names, y_name, htrain, hvalid, seed_):
                seed=seed_)
 
     # select best model from grid search
-    return grid.get_grid()[0]
+    best_model = grid.get_grid()[0]
+    del grid
+
+    return best_model
 
 
 def gbm_grid(x_names, y_name, htrain, hvalid, seed_,
@@ -113,21 +112,24 @@ def gbm_grid(x_names, y_name, htrain, hvalid, seed_,
                             'seed': seed_}
 
     # initialize grid search
-    gsearch = H2OGridSearch(H2OGradientBoostingEstimator,
-                            hyper_params=hyper_params_,
-                            search_criteria=search_criteria_)
+    grid = H2OGridSearch(H2OGradientBoostingEstimator,
+                         hyper_params=hyper_params_,
+                         search_criteria=search_criteria_)
 
     # execute training w/ grid search
-    gsearch.train(x=x_names,
-                  y=y_name,
-                  monotone_constraints=monotone_constraints_,
-                  training_frame=htrain,
-                  validation_frame=hvalid,
-                  stopping_rounds=5,
-                  seed=seed_)
+    grid.train(x=x_names,
+               y=y_name,
+               monotone_constraints=monotone_constraints_,
+               training_frame=htrain,
+               validation_frame=hvalid,
+               stopping_rounds=5,
+               seed=seed_)
 
     # select best model from grid search
-    return gsearch.get_grid()[0]
+    best_model = grid.get_grid()[0]
+    del grid
+
+    return best_model
 
 
 def gbm_forward_select_train(orig_x_names, y_name, train, valid, seed_, next_list,
@@ -281,7 +283,7 @@ def cv_model_rank(valid, seed_, model_name_list, nfolds=5):
             # dynamically generate and run code statements
             # to calculate metrics for each fold and model
             for model in sorted(model_name_list):
-                code = '%s.model_performance(h2o.H2OFrame(temp_df[temp_df["fold"] == %d])).%s()' % (model, fold, metric)
+                code = 'h2o.get_model("%s").model_performance(h2o.H2OFrame(temp_df[temp_df["fold"] == %d])).%s()' % (model, fold, metric)
                 key_ = model + ' Value'
                 val_ = eval(code)
 
@@ -318,17 +320,20 @@ def cv_model_rank(valid, seed_, model_name_list, nfolds=5):
     return eval_frame
 
 
-def cv_model_rank_select(coef_list, model_list, model_name_list, nfolds=5):
+def cv_model_rank_select(valid, seed_, coef_list, model_list, model_prefix,
+                         compare_model_ids, nfolds=5):
 
     """ Performs CV ranking for models in model_list, as compared
         to other models in model_name_list and automatically
         selects highest ranking model across the model_list.
 
+    :param valid: Pandas validation frame.
+    :param seed_: Random seed for better reproducibility.
     :param coef_list: List containing global var. imp. coefficients
                       for models in model list (tightly coupled to frame schemas).
     :param model_list: List of H2O GBM models trained in forward selection.
-    :param model_name_list: A list of strings in which each token is the name
-                            of the Python reference to an H2O model.
+    :param model_prefix:
+    :param compare_model_ids: A list of H2O model_ids.
     :param nfolds: Number of folds over which to evaluate model rankings.
 
     :return: Best model from model_list, it's associated
@@ -337,40 +342,40 @@ def cv_model_rank_select(coef_list, model_list, model_name_list, nfolds=5):
     """
 
     best_idx = 0
+    rank = len(compare_model_ids) + 1
 
-    for i in range(0, len(model_name_list)):
+    for i in range(0, len(model_list)):
 
-        print('Model: %i' % (i + 1))
+        # assign model_ids correctly
+        # so models can be accessed by model_id
+        # in cv_model_rank
+        model_id = model_prefix + str(i+1)
+        model_list[i].model_id = model_id
+        model_name_list = compare_model_ids + [model_id]
 
-        # perform ranking for one set of models
-        # WARNING: horrible coupling here!!
-        # the name of the h2o model must match
-        # the last string in model_name_list
-        code = model_name_list[-1] + ' = model_list[i]'
-        eval(code)
-        eval_frame = cv_model_rank(nfolds, model_name_list)
+        # perform CV rank eval for
+        # current model in model list vs. all compare models
+        eval_frame = cv_model_rank(valid, seed_, model_name_list, nfolds=nfolds)
 
-        # print mean rank for model of interest
-        # (should be last model in model_name_list)
+        # cache CV rank of current model
         title_model_col = model_name_list[-1] + ' Rank'
         new_rank = eval_frame[title_model_col].mean()
-        print(title_model_col + ': %.2f' % new_rank)
 
-    # determine if this model outranks
-    # previous best models
-    rank = len(model_name_list)
-
-    if new_rank < rank:
-        best_idx = i
-        best_model_frame = eval_frame
-        print('New best!!')
-        rank = new_rank
-
-    print('---')
+        # determine if this model outranks
+        # previous best models
+        if new_rank < rank:
+            best_idx = i
+            best_model_frame = eval_frame
+            print('Evaluated model %i/%i with rank: %.2f* ...' % (i + 1, len(model_list), new_rank))
+            rank = new_rank
+        else:
+            print('Evaluated model %i/%i with rank: %.2f ...' % (i + 1, len(model_list), new_rank))
 
     # select model and coefficients
     best_model = model_list[best_idx]
     best_coefs = coef_list[best_idx]
+
+    print('Done.')
 
     # return best model, it's associated coefficients
     # and it's CV ranking frame
