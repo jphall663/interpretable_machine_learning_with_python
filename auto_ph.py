@@ -165,7 +165,7 @@ def gbm_forward_select_train(orig_x_names, y_name, train, valid, seed_, next_lis
     # init loop var
     selected = orig_x_names
 
-    for j, name in enumerate(next_list):
+    for j in range(0, len(next_list) + 1):
 
         # init or clear local dict of monotone constraints
         mc = None
@@ -190,6 +190,10 @@ def gbm_forward_select_train(orig_x_names, y_name, train, valid, seed_, next_lis
         hvalid = h2o.H2OFrame(valid[selected + [y_name]])
 
         # train model and calculate Shapley values
+        print('Starting grid search %i/%i ...' % (j + 1, len(next_list)+1))
+        print('Input features =', selected)
+        if mc is not None:
+            print('Monotone constraints =', mc)
         model_list.append(gbm_grid(selected, y_name, htrain, hvalid, seed_,
                                    monotone_constraints_=mc, hyper_params_=hyper_params_,
                                    search_criteria_=search_criteria_))
@@ -203,11 +207,13 @@ def gbm_forward_select_train(orig_x_names, y_name, train, valid, seed_, next_lis
 
         # retrieve AUC and update progress
         auc_ = model_list[j].auc(valid=True)
-        print('Completed grid search %i/%i with AUC: %.2f ...' % (j + 1, len(next_list), auc_))
+        print('Completed grid search %i/%i with AUC: %.2f ...' % (j + 1, len(next_list)+1, auc_))
+        print('--------------------------------------------------------------------------------')
 
         # add the next most y-correlated feature
         # for the next modeling iteration
-        selected = selected + [next_list[j]]
+        if j < len(next_list):
+            selected = selected + [next_list[j]]
 
     print('Done.')
 
@@ -283,7 +289,8 @@ def cv_model_rank(valid, seed_, model_name_list, nfolds=5):
             # dynamically generate and run code statements
             # to calculate metrics for each fold and model
             for model in sorted(model_name_list):
-                code = 'h2o.get_model("%s").model_performance(h2o.H2OFrame(temp_df[temp_df["fold"] == %d])).%s()' % (model, fold, metric)
+                code = 'h2o.get_model("%s").model_performance(h2o.H2OFrame(temp_df[temp_df["fold"] == %d])).%s()' \
+                       % (model, fold, metric)
                 key_ = model + ' Value'
                 val_ = eval(code)
 
@@ -343,6 +350,7 @@ def cv_model_rank_select(valid, seed_, coef_list, model_list, model_prefix,
 
     best_idx = 0
     rank = len(compare_model_ids) + 1
+    best_model_frame = None
 
     for i in range(0, len(model_list)):
 
@@ -453,9 +461,7 @@ def get_percentile_dict(yhat_name, valid, id_):
     sort_df.reset_index(inplace=True)
 
     # find top and bottom percentiles
-    percentiles_dict = {}
-    percentiles_dict[0] = sort_df.loc[0, id_]
-    percentiles_dict[99] = sort_df.loc[sort_df.shape[0] - 1, id_]
+    percentiles_dict = {0: sort_df.loc[0, id_], 99: sort_df.loc[sort_df.shape[0] - 1, id_]}
 
     # find 10th-90th percentiles
     inc = sort_df.shape[0] // 10
@@ -498,9 +504,9 @@ def plot_pd_ice(x_name, par_dep_frame, ax=None):
     else:
 
         # plot ICE
-        par_dep_frame.plot(x=x_name,
-                           colormap='gnuplot',
-                           ax=ax)
+        par_dep_frame.drop('partial_dependence', axis=1).plot(x=x_name,
+                                                              colormap='gnuplot',
+                                                              ax=ax)
 
         # overlay partial dependence, annotate plot
         par_dep_frame.plot(title='Partial Dependence with ICE: ' + x_name,
