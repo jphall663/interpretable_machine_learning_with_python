@@ -5,3 +5,6 @@ dt_surrogate_mojo.png
 tree*.png
 *.zip
 env*
+*.xml
+*.iml
+*.pyc
