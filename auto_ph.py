@@ -154,13 +154,14 @@ def gbm_forward_select_train(orig_x_names, y_name, train, valid, seed_, next_lis
     :param monotone_constraints_: Dictionary of monotonicity constraints (optional).
     :param hyper_params_: Dictionary of hyperparamters over which to search (optional).
     :param search_criteria_: Dictionary of criterion for grid search (optional).
-    :return: List of H2O GBM models trained in forward selection; list containing
-             a coef_frame for each model.
+    :return: Dictionary of: list of H2O GBM models trained in forward selection, list
+             containing a coef_frame for each model, list of Shapley values for each model.
     """
 
     # init empty parallel lists to store results
     model_list = []
     coef_list = []
+    shap_list = []
 
     # init loop var
     selected = orig_x_names
@@ -198,6 +199,7 @@ def gbm_forward_select_train(orig_x_names, y_name, train, valid, seed_, next_lis
                                    monotone_constraints_=mc, hyper_params_=hyper_params_,
                                    search_criteria_=search_criteria_))
         shap_values = model_list[j].predict_contributions(hvalid).as_data_frame().values[:, :-1]
+        shap_list.append(shap_values)
 
         # update coef_frame with current model Shapley values
         # update coef_list
@@ -217,7 +219,7 @@ def gbm_forward_select_train(orig_x_names, y_name, train, valid, seed_, next_lis
 
     print('Done.')
 
-    return model_list, coef_list
+    return {'MODELS': model_list, 'GLOBAL_COEFS': coef_list, 'LOCAL_COEFS': shap_list}
 
 
 def plot_coefs(coef_list, model_list, title_model, column_order):
@@ -327,7 +329,7 @@ def cv_model_rank(valid, seed_, model_name_list, nfolds=5):
     return eval_frame
 
 
-def cv_model_rank_select(valid, seed_, coef_list, model_list, model_prefix,
+def cv_model_rank_select(valid, seed_, train_results, model_prefix,
                          compare_model_ids, nfolds=5):
 
     """ Performs CV ranking for models in model_list, as compared
@@ -336,10 +338,11 @@ def cv_model_rank_select(valid, seed_, coef_list, model_list, model_prefix,
 
     :param valid: Pandas validation frame.
     :param seed_: Random seed for better reproducibility.
-    :param coef_list: List containing global var. imp. coefficients
-                      for models in model list (tightly coupled to frame schemas).
-    :param model_list: List of H2O GBM models trained in forward selection.
-    :param model_prefix:
+    :param train_results: Dict created by gbm_forward_select_train
+                          containing a list of models, a list of
+                          global coefficients, and a list of local
+                          coefficients.
+    :param model_prefix: String prefix for generated model_id's.
     :param compare_model_ids: A list of H2O model_ids.
     :param nfolds: Number of folds over which to evaluate model rankings.
 
@@ -352,13 +355,13 @@ def cv_model_rank_select(valid, seed_, coef_list, model_list, model_prefix,
     rank = len(compare_model_ids) + 1
     best_model_frame = None
 
-    for i in range(0, len(model_list)):
+    for i in range(0, len(train_results['MODELS'])):
 
         # assign model_ids correctly
         # so models can be accessed by model_id
         # in cv_model_rank
         model_id = model_prefix + str(i+1)
-        model_list[i].model_id = model_id
+        train_results['MODELS'][i].model_id = model_id
         model_name_list = compare_model_ids + [model_id]
 
         # perform CV rank eval for
@@ -374,20 +377,26 @@ def cv_model_rank_select(valid, seed_, coef_list, model_list, model_prefix,
         if new_rank < rank:
             best_idx = i
             best_model_frame = eval_frame
-            print('Evaluated model %i/%i with rank: %.2f* ...' % (i + 1, len(model_list), new_rank))
+            print('Evaluated model %i/%i with rank: %.2f* ...' % (i + 1, len(train_results['MODELS']),
+                                                                  new_rank))
             rank = new_rank
         else:
-            print('Evaluated model %i/%i with rank: %.2f ...' % (i + 1, len(model_list), new_rank))
+            print('Evaluated model %i/%i with rank: %.2f ...' % (i + 1, len(train_results['MODELS']),
+                                                                 new_rank))
 
     # select model and coefficients
-    best_model = model_list[best_idx]
-    best_coefs = coef_list[best_idx]
+    best_model = train_results['MODELS'][best_idx]
+    best_shap = train_results['LOCAL_COEFS'][best_idx]
+    best_coefs = train_results['GLOBAL_COEFS'][best_idx]
 
     print('Done.')
 
     # return best model, it's associated coefficients
     # and it's CV ranking frame
-    return best_model, best_coefs, best_model_frame
+    return {'BEST_MODEL': best_model,
+            'BEST_LOCAL_COEFS': best_shap,
+            'BEST_GLOBAL_COEFS': best_coefs,
+            'METRICS': best_model_frame}
 
 
 def pd_ice(x_name, valid, model, resolution=20, bins=None):
@@ -519,6 +528,16 @@ def plot_pd_ice(x_name, par_dep_frame, ax=None):
 
 def hist_mean_pd_ice_plot(x_name, y_name, valid, pd_ice_dict):
 
+    """ Plots diagnostic plot of histogram with mean line overlay
+        side-by-side with partial dependence and ICE.
+
+    :param x_name: Name of variable for which to plot ICE and partial dependence.
+    :param y_name: Name of target variable.
+    :param valid: Pandas validation frame.
+    :param pd_ice_dict: Dict of Pandas DataFrames containing partial dependence
+                        and ICE values.
+    """
+
     # initialize figure and axis
     fig, (ax, ax2) = plt.subplots(ncols=2, sharey=False)
     plt.tight_layout()
@@ -561,3 +580,138 @@ def hist_mean_pd_ice_plot(x_name, y_name, valid, pd_ice_dict):
     _ = ax2.legend(bbox_to_anchor=(1.05, 0),
                    loc=3,
                    borderaxespad=0.)
+
+
+def get_confusion_matrix(valid, y_name, yhat_name, by=None, level=None, cutoff=0.5):
+
+    """ Creates confusion matrix from pandas DataFrame of y and yhat values, can be sliced
+        by a variable and level.
+
+        :param valid: Validation DataFrame of actual (y) and predicted (yhat) values.
+        :param y_name: Name of actual value column.
+        :param yhat_name: Name of predicted value column.
+        :param by: By variable to slice frame before creating confusion matrix, default None.
+        :param level: Value of by variable to slice frame before creating confusion matrix, default None.
+        :param cutoff: Cutoff threshold for confusion matrix, default 0.5.
+
+        :return: Confusion matrix as pandas DataFrame.
+    """
+
+    # determine levels of target (y) variable
+    # sort for consistency
+    level_list = list(valid[y_name].unique())
+    level_list.sort(reverse=True)
+
+    # init confusion matrix
+    cm_frame = pd.DataFrame(columns=['actual: ' + str(i) for i in level_list],
+                            index=['predicted: ' + str(i) for i in level_list])
+
+    # don't destroy original data
+    frame_ = valid.copy(deep=True)
+
+    # convert numeric predictions to binary decisions using cutoff
+    dname = 'd_' + str(y_name)
+    frame_[dname] = np.where(frame_[yhat_name] > cutoff, 1, 0)
+
+    # slice frame
+    if (by is not None) & (level is not None):
+        frame_ = frame_[valid[by] == level]
+
+    # calculate size of each confusion matrix value
+    for i, lev_i in enumerate(level_list):
+        for j, lev_j in enumerate(level_list):
+            cm_frame.iat[j, i] = frame_[(frame_[y_name] == lev_i) & (frame_[dname] == lev_j)].shape[0]
+            # i, j vs. j, i nasty little bug ... updated 8/30/19
+
+    return cm_frame
+
+
+def air(cm_dict, reference, protected):
+
+    """ Calculates the adverse impact ratio as a quotient between protected and
+        reference group acceptance rates: protected_prop/reference_prop.
+        Prints intermediate values. Tightly coupled to cm_dict.
+
+        :param cm_dict: Dict of confusion matrices containing information
+                        about reference and protected groups.
+        :param reference: Name of reference group in cm_dict as a string.
+        :param protected: Name of protected group in cm_dict as a string.
+        :return: AIR value.
+    """
+
+    # reference group summary
+    reference_accepted = float(cm_dict[reference].iat[1, 0] + cm_dict[reference].iat[1, 1])  # predicted 0's
+    reference_total = float(cm_dict[reference].sum().sum())
+    reference_prop = reference_accepted / reference_total
+    print(reference.title() + ' proportion accepted: %.3f' % reference_prop)
+
+    # protected group summary
+    protected_accepted = float(cm_dict[protected].iat[1, 0] + cm_dict[protected].iat[1, 1])  # predicted 0's
+    protected_total = float(cm_dict[protected].sum().sum())
+    protected_prop = protected_accepted / protected_total
+    print(protected.title() + ' proportion accepted: %.3f' % protected_prop)
+
+    # return adverse impact ratio
+    return protected_prop/reference_prop
+
+
+def marginal_effect(cm_dict, reference, protected):
+
+    """ Calculates the marginal effect as a percentage difference between a reference and
+        a protected group: reference_percent - protected_percent. Prints intermediate values.
+        Tightly coupled to cm_dict.
+
+        :param cm_dict: Dict of confusion matrices containing information
+                        about reference and protected groups.
+        :param reference: Name of reference group in cm_dict as a string.
+        :param protected: Name of protected group in cm_dict as a string.
+        :return: Marginal effect value.
+
+    """
+
+    # reference group summary
+    reference_accepted = float(cm_dict[reference].iat[1, 0] + cm_dict[reference].iat[1, 1])  # predicted 0's
+    reference_total = float(cm_dict[reference].sum().sum())
+    reference_percent = 100 * (reference_accepted / reference_total)
+    print(reference.title() + ' accepted: %.2f%%' % reference_percent)
+
+    # protected group summary
+    protected_accepted = float(cm_dict[protected].iat[1, 0] + cm_dict[protected].iat[1, 1])  # predicted 0's
+    protected_total = float(cm_dict[protected].sum().sum())
+    protected_percent = 100 * (protected_accepted / protected_total)
+    print(protected.title() + ' accepted: %.2f%%' % protected_percent)
+
+    # return marginal effect
+    return reference_percent - protected_percent
+
+
+def smd(valid, x_name, yhat_name, reference, protected):
+
+    """ Calculates standardized mean difference between a protected and reference group:
+        (mean(yhat | x_j=protected) - mean(yhat | x_j=reference))/sigma(yhat).
+        Prints intermediate values.
+
+        :param valid: Pandas dataframe containing j and predicted (yhat) values.
+        :param x_name: name of demographic column containing reference and protected group labels.
+        :param yhat_name: Name of predicted value column.
+        :param reference: name of reference group in x_name.
+        :param protected: name of protected group in x_name.
+
+    Returns:
+       Standardized mean difference as a formatted string.
+
+    """
+
+    # yhat mean for j=reference
+    reference_yhat_mean = valid[valid[x_name] == reference][yhat_name].mean()
+    print(reference.title() + ' mean yhat: %.2f' % reference_yhat_mean)
+
+    # yhat mean for j=protected
+    protected_yhat_mean = valid[valid[x_name] == protected][yhat_name].mean()
+    print(protected.title() + ' mean yhat: %.2f' % protected_yhat_mean)
+
+    # std for yhat
+    sigma = valid[yhat_name].std()
+    print(yhat_name.title() + ' std. dev.:  %.2f' % sigma)
+
+    return (protected_yhat_mean - reference_yhat_mean) / sigma
