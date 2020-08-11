@@ -96,7 +96,7 @@ In general, residual analysis can be characterized as a careful study of when an
 
 ![](readme_pics/hist_pd_ice_lo.png)
 
-This notebook uses the same credit card default scenario to show how monotonicity constraints, Shapley values and other post-hoc explanations, and discrimination testing can enable practitioners to create direct comparisons between GLM and GBM models. Several candidate probability of default models are selected for comparison using forward feature selection methods, like LASSO, and by cross-validated ranking. Comparisons then enable building from GLM to more complex GBM models in a step-by-step manner, while retaining model transparency and the ability to test for discrimination. This notebook shows that a GBMs can yield better accuracy, more revenue, and that GBM is also likely to fulfill model documentation, adverse action notice, and discrimination testing requirements.
+This notebook uses the same credit card default scenario to show how monotonicity constraints, Shapley values and other post-hoc explanations, and discrimination testing can enable practitioners to create direct comparisons between GLM and GBM models. Several candidate probability of default models are selected for comparison using feature selection methods, like LASSO, and by cross-validated ranking. Comparisons then enable building from GLM to more complex GBM models in a step-by-step manner, while retaining model transparency and the ability to test for discrimination. This notebook shows that GBMs can yield better accuracy, more revenue, and that GBM is also likely to fulfill many model documentation, adverse action notice, and discrimination testing requirements.
 
 ## Using the Examples
 
