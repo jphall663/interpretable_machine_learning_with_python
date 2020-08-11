@@ -14,6 +14,7 @@ The notebooks highlight techniques such as:
 * [Sensitivity and residual analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#testing-machine-learning-models-for-accuracy-trustworthiness-and-stability-with-python-and-h2o---notebook)
   * [Advanced sensitivity analysis for model debugging](https://github.com/jphall663/interpretable_machine_learning_with_python#part-1-sensitivity-analysis---notebook)
   * [Advanced residual analysis for model debugging](https://github.com/jphall663/interpretable_machine_learning_with_python#part-2-residual-analysis---notebook)
+* [Detailed model comparison and model selection by cross-validated ranking](https://github.com/jphall663/interpretable_machine_learning_with_python#from-glm-to-gbm-the-business-value-of-a-better-model---notebook)
 
 The notebooks can be accessed through:
 * [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
@@ -22,6 +23,7 @@ The notebooks can be accessed through:
 * [Manual installation (Advanced)](https://github.com/jphall663/interpretable_machine_learning_with_python#manual-installation)
 
 #### Further reading:
+* [*Machine Learning: Considerations for fairly and transparently expanding access to credit*](http://info.h2o.ai/rs/644-PKX-778/images/Machine%20Learning%20-%20Considerations%20for%20Fairly%20and%20Transparently%20Expanding%20Access%20to%20Credit.pdf)
 * [*A Responsible Machine Learning Workflow with Focus on Interpretable Models, Post-hoc Explanation, and Discrimination Testing*](https://www.mdpi.com/2078-2489/11/3/137)
 * [*An Introduction to Machine Learning Interpretability, 2nd Edition*](https://www.h2o.ai/wp-content/uploads/2019/08/An-Introduction-to-Machine-Learning-Interpretability-Second-Edition.pdf)
 * [*On the Art and Science of Explainable Machine Learning*](https://arxiv.org/pdf/1810.02909.pdf)
@@ -89,6 +91,12 @@ These model debugging exercises uncover accuracy, drift, and security problems s
 ![](readme_pics/resid2.png)
 
 In general, residual analysis can be characterized as a careful study of when and how models make mistakes. A better understanding of mistakes will hopefully lead to fewer of them. This notebook uses variants of residual analysis to find error mechanisms and security vulnerabilities and to assess stability and fairness in a trained XGBoost model. It begins by loading the UCI credit card default data and then training an interpretable, monotonically constrained XGBoost gradient boosting machine (GBM) model. (Pearson correlation with the prediction target is used to determine the direction of the monotonicity constraints for each input variable.) After the model is trained, its logloss residuals are analyzed and explained thoroughly and the constrained GBM is compared to a benchmark linear model. These model debugging exercises uncover accuracy, drift, and security problems such as over-emphasis of important variables and strong signal in model residuals. Several remediation mechanisms are proposed including missing value injection during training, additional data collection, and use of assertions to correct known problems during scoring.
+
+### From GLM to GBM: The Business Value of a Better Model - [Notebook](https://nbviewer.jupyter.org/github/jphall663/interpretable_machine_learning_with_python/blob/master/glm_mgbm_gbm.ipynb)
+
+![](readme_pics/hist_pd_ice_lo.png)
+
+This notebook uses the same credit card default scenario to show how monotonicity constraints, Shapley values and other post-hoc explanations, and discrimination testing can enable practitioners to create direct comparisons between GLM and GBM models. Several candidate probability of default models are selected for comparison using forward feature selection method, like LASSO and cross-validated ranking. Comparisons then enable building from GLM to more complex GBM models in a step-by-step manner, while retaining model transparency and the ability to test for discrimination. This notebook shows that a GBMs can yield better accuracy, more revenue, and that GBM is also likely to fulfill model documentation, adverse action notice, and discrimination testing requirements.
 
 ## Using the Examples
 
