@@ -14,7 +14,7 @@ The notebooks highlight techniques such as:
 * [Sensitivity and residual analysis](https://github.com/jphall663/interpretable_machine_learning_with_python#testing-machine-learning-models-for-accuracy-trustworthiness-and-stability-with-python-and-h2o---notebook)
   * [Advanced sensitivity analysis for model debugging](https://github.com/jphall663/interpretable_machine_learning_with_python#part-1-sensitivity-analysis---notebook)
   * [Advanced residual analysis for model debugging](https://github.com/jphall663/interpretable_machine_learning_with_python#part-2-residual-analysis---notebook)
-* [Detailed model comparison and model selection by cross-validated ranking](https://github.com/jphall663/interpretable_machine_learning_with_python#from-glm-to-gbm-the-business-value-of-a-better-model---notebook)
+* [Detailed model comparison and model selection by cross-validated ranking](https://github.com/jphall663/interpretable_machine_learning_with_python#from-glm-to-gbm-building-the-case-for-complexity---notebook)
 
 The notebooks can be accessed through:
 * [H2O Aquarium (Recommended)](https://github.com/jphall663/interpretable_machine_learning_with_python#h2o-aquarium-recommended)
