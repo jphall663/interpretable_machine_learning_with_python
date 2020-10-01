@@ -32,6 +32,7 @@ The notebooks can be accessed through:
 * [*Real-World Strategies for Model Debugging*](https://medium.com/@jphall_22520/strategies-for-model-debugging-aa822f1097ce)
 * [*Warning Signs: Security and Privacy in an Age of Machine Learning*](https://fpf.org/wp-content/uploads/2019/09/FPF_WarningSigns_Report.pdf)
 * [*Why you should care about debugging machine learning models*](https://www.oreilly.com/radar/why-you-should-care-about-debugging-machine-learning-models/)
+* [*Why is Explainable AI, a necessity](https://hdsr.mitpress.mit.edu/pub/f9kuryi8/release/5)
 
 ***
 
