@@ -234,16 +234,17 @@ def plot_coefs(coef_list, model_list, title_model, column_order):
     :param column_order: List of column names to preserve coloring
                          from previous coefficient plots.
     """
-
+    
     for j, frame in enumerate(coef_list):
-
+        
         auc_ = model_list[j].auc(valid=True)
         title_ = title_model + ' Model: {j}\n GBM AUC: {auc:.2f}'.format(j=str(j + 1), auc=auc_)
         fig, ax_ = plt.subplots(figsize=(10, 8))
         _ = frame[column_order].plot(kind='barh',
                                      ax=ax_,
                                      title=title_,
-                                     colormap='gnuplot')
+                                     edgecolor=['black']*len(frame.index),
+                                     colormap='cool')
 
 
 def cv_model_rank(valid, seed_, model_name_list, nfolds=5):
@@ -499,7 +500,7 @@ def plot_pd_ice(x_name, par_dep_frame, ax=None):
 
         # plot ICE
         par_dep_frame.drop('partial_dependence', axis=1).plot(x=x_name,
-                                                              colormap='gnuplot',
+                                                              colormap='cool',
                                                               ax=ax)
         # overlay partial dependence, annotate plot
         par_dep_frame.plot(title='Partial Dependence with ICE: ' + x_name,
@@ -514,7 +515,7 @@ def plot_pd_ice(x_name, par_dep_frame, ax=None):
 
         # plot ICE
         par_dep_frame.drop('partial_dependence', axis=1).plot(x=x_name,
-                                                              colormap='gnuplot',
+                                                              colormap='cool',
                                                               ax=ax)
 
         # overlay partial dependence, annotate plot
