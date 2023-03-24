@@ -5,7 +5,7 @@
 h2o==3.26.0.3
 jupyter==1.0.0
 matplotlib==2.1.0
-numpy==1.16.0
+numpy==1.22.0
 pandas==0.23.4
 scikit-learn==0.19.1
 seaborn==0.8.1
